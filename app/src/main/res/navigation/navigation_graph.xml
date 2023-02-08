@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/mainTabLayoutFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -15,4 +15,14 @@
         android:name="com.ihsan.cricplanet.ui.fragment.LiveFragment"
         android:label="fragment_live"
         tools:layout="@layout/fragment_live" />
+    <fragment
+        android:id="@+id/mainTabLayoutFragment"
+        android:name="com.ihsan.cricplanet.ui.fragment.viewpager.MainTabLayoutFragment"
+        android:label="fragment_main_tab_layout"
+        tools:layout="@layout/fragment_main_tab_layout" />
+    <fragment
+        android:id="@+id/matchesFragment"
+        android:name="com.ihsan.cricplanet.ui.fragment.MatchesFragment"
+        android:label="fragment_matches"
+        tools:layout="@layout/fragment_matches" />
 </navigation>

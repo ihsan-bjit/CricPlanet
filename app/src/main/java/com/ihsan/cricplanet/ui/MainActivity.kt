@@ -44,10 +44,10 @@ class MainActivity : AppCompatActivity() {
         navController = findNavController(id.fragment_container)
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                id.tabLayoutFragment, id.liveFragment
+                id.homeFragment, id.liveFragment
             )
         )
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        //setupActionBarWithNavController(navController, appBarConfiguration)
         bottomNavigation.setupWithNavController(navController)
     }
 
