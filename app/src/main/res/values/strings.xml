@@ -5,4 +5,7 @@
     <string name="view_pager_card_view">view pager card view</string>
     <string name="matches">Matches</string>
     <string name="home">Home</string>
+    <string name="team_name">team name</string>
+    <string name="favourite_image_button">favourite Image button</string>
+    <string name="image_view">image view</string>
 </resources>
