@@ -27,43 +27,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-/*        checkNetwork= CheckNetwork()
-
-        //Network check register and toast at start up
-        registerReceiver(checkNetwork, IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"))
-        //AirplaneMode check register
-        registerReceiver(AirplaneModeReceiver(), IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED))
-        //check Internet permission
-        checkNetwork.checkINTERNETPermission()
-        //Request SMS permission
-        requestSmsPermission()
-        //Periodic work request call
-        WorkRequest().setPeriodicWorkRequest()*/
 
         val bottomNavigation: BottomNavigationView = binding.bottomNav
         navController = findNavController(id.fragment_container)
-        val appBarConfiguration = AppBarConfiguration(
+        /*val appBarConfiguration = AppBarConfiguration(
             setOf(
                 id.homeFragment, id.liveFragment
             )
         )
-        //setupActionBarWithNavController(navController, appBarConfiguration)
+        setupActionBarWithNavController(navController, appBarConfiguration)*/
         bottomNavigation.setupWithNavController(navController)
     }
 
-//    private fun requestSmsPermission() {
-//        val permission = Manifest.permission.RECEIVE_SMS
-//        if (ContextCompat.checkSelfPermission(MyApplication.instance, permission) != PackageManager.PERMISSION_GRANTED) {
-//            ActivityCompat.requestPermissions(this, arrayOf(permission), Constant.smsRequestPermissionAccessCode)
-//        }
-//    }
-
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        //unregisterReceiver(checkNetwork)
     }
 }
