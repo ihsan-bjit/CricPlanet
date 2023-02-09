@@ -1,5 +1,7 @@
 package com.ihsan.cricplanet.model.fixture.scoreboard.lineup
 
+import com.ihsan.cricplanet.model.Position
+
 data class Lineup(
     val battingstyle: String,
     val bowlingstyle: String,

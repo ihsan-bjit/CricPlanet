@@ -1,5 +1,8 @@
 package com.ihsan.cricplanet.model.fixture.result.winnerteam
 
+import com.ihsan.cricplanet.model.fixture.LocalteamDlData
+import com.ihsan.cricplanet.model.fixture.VisitorteamDlData
+
 data class WinnerTeam(
     val draw_noresult: Any,
     val elected: String,
