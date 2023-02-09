@@ -22,7 +22,7 @@ import com.ihsan.cricplanet.viewmodel.CricViewModel
 import com.squareup.picasso.Picasso
 
 class TeamAdapter(
-    private val teamList: ArrayList<Team>
+    private val teamList: List<Team>
 ) : RecyclerView.Adapter<TeamAdapter.TeamViewHolder>() {
     //private val viewModel: CricViewModel = CricViewModel(application = Application())
 

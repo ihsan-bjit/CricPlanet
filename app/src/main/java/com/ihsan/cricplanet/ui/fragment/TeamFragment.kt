@@ -32,17 +32,16 @@ class TeamFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        recyclerView = binding.recyclerviewTeam
+        recyclerView.layoutManager = LinearLayoutManager(requireActivity())
+        recyclerView.setHasFixedSize(true)
         viewModel.getTeams.observe(viewLifecycleOwner) {
             Log.d("cricTeam", "onViewCreated Team teamList: ${it.size}")
-            recyclerView = binding.recyclerviewTeam
-            recyclerView.layoutManager = LinearLayoutManager(requireActivity())
-            recyclerView.adapter = TeamAdapter(it as ArrayList<Team>)
-            recyclerView.setHasFixedSize(true)
-            if (it.isEmpty()) {
-                Log.d("newsHome", "onViewCreated with empty roomData: APi Call ")
-                viewModel.getTeams()
-            }
+            recyclerView.adapter = TeamAdapter(it)
+//            if (it.isEmpty()) {
+//                Log.d("cricTeam", "onViewCreated with empty roomData: APi Call ")
+//                viewModel.getTeams()
+//            }
         }
     }
 }
