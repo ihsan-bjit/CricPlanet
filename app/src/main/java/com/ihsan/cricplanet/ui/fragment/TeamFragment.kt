@@ -1,5 +1,6 @@
 package com.ihsan.cricplanet.ui.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -27,21 +28,22 @@ class TeamFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding=FragmentTeamBinding.inflate(inflater,container,false)
-        return inflater.inflate(R.layout.fragment_team, container, false)
+        return binding.root
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = binding.recyclerviewTeam
         recyclerView.layoutManager = LinearLayoutManager(requireActivity())
         recyclerView.setHasFixedSize(true)
         viewModel.getTeams.observe(viewLifecycleOwner) {
-            Log.d("cricTeam", "onViewCreated Team teamList: ${it.size}")
-            recyclerView.adapter = TeamAdapter(it)
-//            if (it.isEmpty()) {
-//                Log.d("cricTeam", "onViewCreated with empty roomData: APi Call ")
-//                viewModel.getTeams()
-//            }
+            Log.d("cricTeam", "onViewCreated Team teamList: $it")
+            recyclerView.adapter=TeamAdapter(it)
+            if (it.isEmpty()) {
+                Log.d("cricTeam", "onViewCreated with empty roomData: APi Call ")
+                viewModel.getTeams()
+            }
         }
     }
 }

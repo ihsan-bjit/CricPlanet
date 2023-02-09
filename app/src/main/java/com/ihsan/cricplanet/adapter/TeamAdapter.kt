@@ -1,10 +1,8 @@
 package com.ihsan.cricplanet.adapter
 
 import android.annotation.SuppressLint
-import android.app.Application
 import android.graphics.Color
 import android.graphics.Typeface
-import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,20 +10,13 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.ihsan.cricplanet.R
 import com.ihsan.cricplanet.model.Team
-import com.ihsan.cricplanet.viewmodel.CricViewModel
-import com.squareup.picasso.Picasso
 
-class TeamAdapter(
-    private val teamList: List<Team>
-) : RecyclerView.Adapter<TeamAdapter.TeamViewHolder>() {
+class TeamAdapter(private val teamList: List<Team>) : RecyclerView.Adapter<TeamAdapter.TeamViewHolder>() {
     //private val viewModel: CricViewModel = CricViewModel(application = Application())
-
     class TeamViewHolder(private val binding: View) : RecyclerView.ViewHolder(binding){
         val teamName: TextView =binding.findViewById(R.id.team)
         val image: ImageView =itemView.findViewById(R.id.image)
