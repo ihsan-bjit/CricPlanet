@@ -28,6 +28,7 @@ class CricViewModel(application: Application) : AndroidViewModel(application) {
         //Assigning dao object to repository instance
         repository = CricRepository(CricDao)
         getTeams = repository.readTeams()
+        getFeatures()
     }
 
 //    fun getBookmarks(): LiveData<List<NewsTable>> {
@@ -47,9 +48,18 @@ class CricViewModel(application: Application) : AndroidViewModel(application) {
     fun getTeams() {
         viewModelScope.launch {
             try {
-                storeLocal(CricApi.retrofitService.getTeamsApi().data)
+                storeLocal(repository.getTeamsApi())
             } catch (e: java.lang.Exception) {
                 Log.d("teamCatch", "getTeam: $e")
+            }
+        }
+    }
+    fun getFeatures() {
+        viewModelScope.launch {
+            try {
+                Log.d("cricViewModel", "getFeatures: ${repository.getTeamsApi()}")
+            } catch (e: java.lang.Exception) {
+                Log.d("cricViewModelCatch", "getTeam: $e")
             }
         }
     }
