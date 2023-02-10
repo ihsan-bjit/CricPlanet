@@ -1,7 +1,6 @@
-package com.ihsan.cricplanet.model.fixture.result
+package com.ihsan.cricplanet.model.fixture.result.teamwontoss
 
-import com.ihsan.cricplanet.model.fixture.LocalteamDlData
-import com.ihsan.cricplanet.model.fixture.VisitorteamDlData
+import com.ihsan.cricplanet.model.fixture.TeamDlData
 
 data class TeamWonToss(
     val draw_noresult: Any,
@@ -12,7 +11,7 @@ data class TeamWonToss(
     val last_period: Any,
     val league_id: Int,
     val live: Boolean,
-    val localteam_dl_data: LocalteamDlData,
+    val localteam_dl_data: TeamDlData,
     val localteam_id: Int,
     val man_of_match_id: Int,
     val man_of_series_id: Any,
@@ -29,12 +28,12 @@ data class TeamWonToss(
     val status: String,
     val super_over: Boolean,
     val toss_won_team_id: Int,
-    val tosswon: Tosswon,
+    val tosswon: TossWon,
     val total_overs_played: Int,
     val tv_umpire_id: Int,
     val type: String,
     val venue_id: Int,
-    val visitorteam_dl_data: VisitorteamDlData,
+    val visitorteam_dl_data: TeamDlData,
     val visitorteam_id: Int,
     val weather_report: List<Any>,
     val winner_team_id: Int

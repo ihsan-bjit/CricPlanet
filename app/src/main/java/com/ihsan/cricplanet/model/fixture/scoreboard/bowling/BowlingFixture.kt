@@ -1,7 +1,6 @@
 package com.ihsan.cricplanet.model.fixture.scoreboard.bowling
 
-import com.ihsan.cricplanet.model.fixture.LocalteamDlData
-import com.ihsan.cricplanet.model.fixture.VisitorteamDlData
+import com.ihsan.cricplanet.model.fixture.TeamDlData
 
 data class BowlingFixture(
     val bowling: List<Bowling>,
@@ -13,7 +12,7 @@ data class BowlingFixture(
     val last_period: Any,
     val league_id: Int,
     val live: Boolean,
-    val localteam_dl_data: LocalteamDlData,
+    val localteam_dl_data: TeamDlData,
     val localteam_id: Int,
     val man_of_match_id: Any,
     val man_of_series_id: Any,
@@ -34,7 +33,7 @@ data class BowlingFixture(
     val tv_umpire_id: Int,
     val type: String,
     val venue_id: Int,
-    val visitorteam_dl_data: VisitorteamDlData,
+    val visitorteam_dl_data: TeamDlData,
     val visitorteam_id: Int,
     val weather_report: List<Any>,
     val winner_team_id: Any

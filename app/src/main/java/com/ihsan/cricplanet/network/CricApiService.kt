@@ -1,7 +1,6 @@
 package com.ihsan.cricplanet.network
 
-import com.ihsan.cricplanet.model.apiresponse.ResponseTeam
-import com.ihsan.cricplanet.model.fixture.Fixture
+import com.ihsan.cricplanet.model.responseapi.ResponseTeam
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit

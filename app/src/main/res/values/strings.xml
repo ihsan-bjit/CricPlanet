@@ -8,4 +8,5 @@
     <string name="team_name">team name</string>
     <string name="favourite_image_button">favourite Image button</string>
     <string name="image_view">image view</string>
+    <string name="team">Team</string>
 </resources>

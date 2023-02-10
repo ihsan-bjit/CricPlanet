@@ -11,6 +11,9 @@
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:tabTextColor="@color/colorPrimaryVariant"
+        app:tabSelectedTextColor="@color/cardview_light_background"
+        android:backgroundTint="@color/colorPrimary"
         android:contentDescription="@string/view_pager_card_view"
         app:tabMode="scrollable" />
 

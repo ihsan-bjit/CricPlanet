@@ -1,4 +1,4 @@
-package com.ihsan.cricplanet.model.apiresponse
+package com.ihsan.cricplanet.model.responseapi
 
 import com.ihsan.cricplanet.model.Team
 

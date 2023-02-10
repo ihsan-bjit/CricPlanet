@@ -1,6 +1,6 @@
-package com.ihsan.cricplanet.model.fixture.result.winnerteam
+package com.ihsan.cricplanet.model.fixture.result.teamwontoss
 
-data class WinnerteamX(
+data class TossWon(
     val code: String,
     val country_id: Int,
     val id: Int,

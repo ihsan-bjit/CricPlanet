@@ -2,7 +2,7 @@ package com.ihsan.cricplanet.model.fixture.result.manofthematch
 
 import com.ihsan.cricplanet.model.Position
 
-data class Manofmatch(
+data class ManOfMatch(
     val battingstyle: String,
     val bowlingstyle: String,
     val country_id: Int,

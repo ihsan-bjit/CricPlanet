@@ -3,6 +3,7 @@ package com.ihsan.cricplanet.adapter
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.Typeface
+import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.ihsan.cricplanet.R
 import com.ihsan.cricplanet.model.Team
+import com.squareup.picasso.Picasso
 
 class TeamAdapter(private val teamList: List<Team>) : RecyclerView.Adapter<TeamAdapter.TeamViewHolder>() {
     //private val viewModel: CricViewModel = CricViewModel(application = Application())
@@ -40,7 +42,7 @@ class TeamAdapter(private val teamList: List<Team>) : RecyclerView.Adapter<TeamA
         val team=teamList[position]
         Log.d("teamAdapter", "BindViewHolder: ${teamList.size}")
         holder.teamName.text=team.name
-        /*holder.description.text="Id: ${team.id}${team.resource} updated at:${team.updated_at}"
+        holder.description.text="Id: ${team.id}${team.resource} updated at:${team.updated_at}"
 
         holder.source.text=team.national_team.toString()
 
@@ -52,9 +54,9 @@ class TeamAdapter(private val teamList: List<Team>) : RecyclerView.Adapter<TeamA
             holder.image.setImageResource(R.drawable.ic_image)
         }
         holder.itemView.setOnClickListener{
-            //showStyledSnackbar(it, team.name)
-            //notifyDataSetChanged()
-        }*/
+            showStyledSnackbar(it, team.name)
+            notifyDataSetChanged()
+        }
     }
 
     fun showStyledSnackbar(view: View, text: String) {
