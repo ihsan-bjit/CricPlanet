@@ -6,7 +6,7 @@
         android:icon="@drawable/ic_home"
         />
     <item
-        android:id="@+id/matchesFragment"
+        android:id="@+id/matchTabLayoutFragment"
         android:title="@string/matches"
         android:icon="@drawable/ic_sports_cricket"
         />
