@@ -10,11 +10,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.ihsan.cricplanet.R
 import com.ihsan.cricplanet.adapter.TeamAdapter
 import com.ihsan.cricplanet.databinding.FragmentTeamBinding
-import com.ihsan.cricplanet.model.Team
-import com.ihsan.cricplanet.utils.MyApplication
 import com.ihsan.cricplanet.viewmodel.CricViewModel
 
 class TeamFragment : Fragment() {
@@ -37,7 +34,7 @@ class TeamFragment : Fragment() {
         recyclerView = binding.recyclerviewTeam
         recyclerView.layoutManager = LinearLayoutManager(requireActivity())
         recyclerView.setHasFixedSize(true)
-        viewModel.getTeams.observe(viewLifecycleOwner) {
+        viewModel.getTeamsDB.observe(viewLifecycleOwner) {
             Log.d("cricTeam", "onViewCreated Team teamList: $it")
             recyclerView.adapter=TeamAdapter(it)
             if (it.isEmpty()) {

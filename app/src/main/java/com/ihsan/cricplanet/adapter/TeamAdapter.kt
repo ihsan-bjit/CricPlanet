@@ -37,7 +37,7 @@ class TeamAdapter(private val teamList: List<Team>) : RecyclerView.Adapter<TeamA
         return teamList.size
     }
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "NotifyDataSetChanged")
     override fun onBindViewHolder(holder: TeamViewHolder, position: Int) {
         val team=teamList[position]
         Log.d("teamAdapter", "BindViewHolder: ${teamList.size}")
@@ -54,13 +54,17 @@ class TeamAdapter(private val teamList: List<Team>) : RecyclerView.Adapter<TeamA
             holder.image.setImageResource(R.drawable.ic_image)
         }
         holder.itemView.setOnClickListener{
-            showStyledSnackbar(it, team.name)
+            showStyledSnackbar(it, team?.name)
             notifyDataSetChanged()
         }
     }
 
-    fun showStyledSnackbar(view: View, text: String) {
-        val snackbar = Snackbar.make(view, text, Snackbar.LENGTH_LONG)
+    private fun showStyledSnackbar(view: View, text: String?) {
+        var showText=""
+        if (text!=null){
+            showText=text
+        }
+        val snackbar = Snackbar.make(view, showText, Snackbar.LENGTH_LONG)
         val snackbarView = snackbar.view
         snackbarView.setBackgroundColor(Color.parseColor("#3F51B5"))
         val textView = snackbarView.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)

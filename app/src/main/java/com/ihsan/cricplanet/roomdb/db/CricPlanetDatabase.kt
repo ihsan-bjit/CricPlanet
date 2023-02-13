@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 import com.ihsan.cricplanet.model.Team
 import com.ihsan.cricplanet.roomdb.dao.CricDao
 
-@Database(entities = [Team::class], version=1, exportSchema = false)
+@Database(entities = [Team::class], version=2, exportSchema = false)
 abstract class CricPlanetDatabase: RoomDatabase() {
     abstract fun CricDao(): CricDao
     companion object{
