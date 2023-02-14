@@ -42,6 +42,5 @@ class MatchesFragment : Fragment() {
                 viewModel.getTeams()
             }
         }
-
     }
 }

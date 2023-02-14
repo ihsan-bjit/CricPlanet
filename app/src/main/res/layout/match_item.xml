@@ -23,6 +23,7 @@
         <TextView
             android:id="@+id/fixture_name"
             android:layout_width="wrap_content"
+            android:minWidth="2dp"
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -36,7 +37,7 @@
 
             <LinearLayout
                 android:layout_width="100dp"
-                android:layout_height="120dp"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:foregroundGravity="center"
@@ -65,6 +66,7 @@
                     android:id="@+id/local_team_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:padding="2dp"
                     android:textSize="15sp"
                     android:textStyle="bold"
                     android:hint="@string/team_name" />
@@ -113,7 +115,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
+                        android:textColor="@color/white"
+                        android:background="@color/colorPrimary"
+                        android:padding="1.5dp"
                         android:hint="@string/status"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="5dp"/>
+                    <TextView
+                        android:id="@+id/fixture_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:textColor="@color/colorOnSecondary"
+                        android:padding="1.5dp"
                         android:textSize="14sp"
                         android:textStyle="bold"
                         android:layout_marginTop="5dp"/>
@@ -140,7 +155,7 @@
 
             <LinearLayout
                 android:layout_width="100dp"
-                android:layout_height="120dp"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="vertical">
                 <androidx.cardview.widget.CardView
@@ -169,6 +184,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="15sp"
                     android:textStyle="bold"
+                    android:padding="2dp"
                     android:hint="@string/team_name" />
             </LinearLayout>
         </LinearLayout>

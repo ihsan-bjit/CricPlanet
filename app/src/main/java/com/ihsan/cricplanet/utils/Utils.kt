@@ -3,6 +3,8 @@ package com.ihsan.cricplanet.utils
 import android.util.Log
 import android.widget.Toast
 import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 class Utils {
@@ -11,8 +13,49 @@ class Utils {
     }
 
     fun logNtoast(tag: String, message: String) {
-        Toast.makeText(MyApplication.instance, "tag: $tag message: $message", Toast.LENGTH_SHORT).show()
+        Toast.makeText(MyApplication.instance, "tag: $tag message: $message", Toast.LENGTH_SHORT)
+            .show()
         Log.d(tag, message)
+    }
+
+    fun upcomingYearDuration():String {
+
+        // Get the current date and time
+        val currentDateTime = LocalDateTime.now()
+
+        // Add 1 year to the current date and time
+        val nextYearDateTime = currentDateTime.plusYears(1)
+
+        // Format the new date and time as a string
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+        val nextMinuteDateTimeString = currentDateTime.format(formatter)
+        val nextYearDateTimeString = nextYearDateTime.format(formatter)
+
+        //Combine them in one string using comma as separator
+        val upcomingYearString="$nextMinuteDateTimeString,$nextYearDateTimeString"
+        Log.d("cricUtils", "upcomingYearDuration: $upcomingYearString")
+
+        return upcomingYearString
+    }
+
+    fun recentMonthDuration():String {
+
+        // Get the current date and time
+        val currentDateTime = LocalDateTime.now()
+
+        // Add 1 year to the current date and time
+        val lastMonthsDateTime = currentDateTime.minusMonths(2)
+
+        // Format the new date and time as a string
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+        val lastMinuteDateTimeString = currentDateTime.format(formatter)
+        val lastMonthsDateTimeString = lastMonthsDateTime.format(formatter)
+
+        //Combine them in one string using comma as separator
+        val upcomingYearString="$lastMonthsDateTimeString,$lastMinuteDateTimeString"
+        Log.d("cricUtils", "lastMonthDuration: $upcomingYearString")
+
+        return upcomingYearString
     }
 
     fun timeAgoConverter(timestamp: String): String {

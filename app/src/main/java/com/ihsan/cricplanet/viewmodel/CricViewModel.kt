@@ -7,13 +7,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.ihsan.cricplanet.model.Team
-import com.ihsan.cricplanet.model.fixture.Fixture
 import com.ihsan.cricplanet.model.fixture.FixtureIncludeTeams
+import com.ihsan.cricplanet.model.fixture.FixtureIncludeTeamsVenue
 import com.ihsan.cricplanet.repository.CricRepository
 import com.ihsan.cricplanet.roomdb.dao.CricDao
 import com.ihsan.cricplanet.roomdb.db.CricPlanetDatabase
 import kotlinx.coroutines.*
-
+@OptIn(DelicateCoroutinesApi::class)
 class CricViewModel(application: Application) : AndroidViewModel(application) {
     //Initialize repository object
     private val repository: CricRepository
@@ -51,8 +51,8 @@ class CricViewModel(application: Application) : AndroidViewModel(application) {
             }
         }
     }
-    fun getFixturesApi():MutableLiveData<List<FixtureIncludeTeams>> {
-        val fixturesLiveData= MutableLiveData<List<FixtureIncludeTeams>>()
+    fun getFixturesApi():MutableLiveData<List<FixtureIncludeTeamsVenue>> {
+        val fixturesLiveData= MutableLiveData<List<FixtureIncludeTeamsVenue>>()
         GlobalScope.launch {
             viewModelScope.launch {
                 try {
@@ -64,5 +64,34 @@ class CricViewModel(application: Application) : AndroidViewModel(application) {
             }
         }
         return fixturesLiveData
+    }
+
+    fun getUpcomingFixturesApi():MutableLiveData<List<FixtureIncludeTeamsVenue>> {
+        val upcomingFixturesLiveData = MutableLiveData<List<FixtureIncludeTeamsVenue>>()
+        GlobalScope.launch {
+            viewModelScope.launch {
+                try {
+                    upcomingFixturesLiveData.value=repository.getUpcomingFixturesApi()
+                    Log.d("cricViewModel", "getFeatures: ${upcomingFixturesLiveData.value}")
+                } catch (e: java.lang.Exception) {
+                    Log.d("cricViewModelCatch", "getFeatures: $e")
+                }
+            }
+        }
+        return upcomingFixturesLiveData
+    }
+    fun getRecentFixturesApi():MutableLiveData<List<FixtureIncludeTeamsVenue>> {
+        val recentFixturesLiveData= MutableLiveData<List<FixtureIncludeTeamsVenue>>()
+        GlobalScope.launch {
+            viewModelScope.launch {
+                try {
+                    recentFixturesLiveData.value=repository.getRecentFixturesApi()
+                    Log.d("cricViewModel", "getFeatures: ${recentFixturesLiveData.value}")
+                } catch (e: java.lang.Exception) {
+                    Log.d("cricViewModelCatch", "getFeatures: $e")
+                }
+            }
+        }
+        return recentFixturesLiveData
     }
 }

@@ -1,9 +1,9 @@
 package com.ihsan.cricplanet.model.responseapi
 
-import com.ihsan.cricplanet.model.fixture.FixtureIncludeTeams
+import com.ihsan.cricplanet.model.fixture.Fixture
 
 data class ResponseFixture(
-    val `data`: List<FixtureIncludeTeams>,
+    val `data`: List<Fixture>,
     val links: Links,
     val meta: Meta
 )

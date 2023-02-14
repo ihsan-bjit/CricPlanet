@@ -5,11 +5,11 @@
     <string name="view_pager_card_view">view pager card view</string>
     <string name="matches">Matches</string>
     <string name="home">Home</string>
-    <string name="team_name">team name</string>
+    <string name="team_name">team</string>
     <string name="favourite_image_button">favourite Image button</string>
     <string name="image_view">image view</string>
     <string name="team">Team</string>
-    <string name="fixture_name">Fixture Name</string>
+    <string name="fixture_name">Fixture</string>
     <string name="fixture_note">Fixture Note</string>
     <string name="status">status</string>
     <string name="vs">VS</string>
