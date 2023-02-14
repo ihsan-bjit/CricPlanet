@@ -10,7 +10,7 @@
         <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
         <item name="colorOnPrimary">@color/colorOnPrimary</item>
         <item name="colorOnSecondary">@color/colorOnSecondary</item>
-        <item name="android:statusBarColor">@color/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">@color/colorPrimary</item>
         <item name="android:windowBackground">@drawable/gradient_background</item>
         <item name="android:textColorPrimary">@color/colorOnSecondary</item>
     </style>

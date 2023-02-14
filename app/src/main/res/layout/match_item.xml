@@ -7,28 +7,39 @@
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     android:clickable="true"
+    android:focusable="true"
     app:cardCornerRadius="15dp"
-    app:cardElevation="50dp"
-    android:focusable="true">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="fill_horizontal"
-        android:orientation="vertical">
+    app:cardElevation="50dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="horizontal">
-        <TextView
-            android:id="@+id/fixture_name"
-            android:layout_width="wrap_content"
-            android:minWidth="2dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:hint="@string/fixture_name"/>
-    </LinearLayout>
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/fixture_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/fixture_name"
+                android:minWidth="2dp"
+                android:textColor="@color/colorOnSecondary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@color/horizontalLine" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -38,10 +49,11 @@
             <LinearLayout
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_gravity="center"
                 android:foregroundGravity="center"
+                android:gravity="center"
                 android:orientation="vertical">
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -49,27 +61,30 @@
                     android:backgroundTint="@color/white"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="5dp">
+
                     <ImageView
                         android:id="@+id/local_team_image"
                         android:layout_width="90dp"
                         android:layout_height="wrap_content"
-                        android:maxHeight="150dp"
-                        android:minHeight="130dp"
-                        android:padding="5dp"
                         android:layout_gravity="center_horizontal"
                         android:adjustViewBounds="true"
                         android:contentDescription="@string/image_view"
                         android:elevation="20dp"
+                        android:maxHeight="150dp"
+                        android:minHeight="130dp"
+                        android:padding="5dp"
                         tools:src="@tools:sample/backgrounds/scenic" />
                 </androidx.cardview.widget.CardView>
+
                 <TextView
                     android:id="@+id/local_team_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="2dp"
+                    android:hint="@string/team_name"
+                    android:gravity="center"
+                    android:padding="1dp"
                     android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:hint="@string/team_name" />
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -80,25 +95,28 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:minWidth="40dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:minWidth="40dp"
                     android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/team1_run"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
+
                     <TextView
                         android:id="@+id/team1_over"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/card_details"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginVertical="12dp"
                     android:gravity="center"
                     android:orientation="vertical">
 
@@ -106,49 +124,66 @@
                         android:id="@+id/match_vs"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/vs"
+                        android:layout_marginVertical="15dp"
+                        android:text="@string/vs"
                         android:textSize="18sp"
-                        android:textStyle="bold|italic"/>
+                        android:textStyle="bold|italic" />
 
-                    <TextView
-                        android:id="@+id/fixture_status"
+                    <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:textColor="@color/white"
-                        android:background="@color/colorPrimary"
-                        android:padding="1.5dp"
-                        android:hint="@string/status"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:layout_marginTop="5dp"/>
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="2dp">
+
+                        <TextView
+                            android:id="@+id/fixture_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@color/colorPrimary"
+                            android:ellipsize="end"
+                            android:hint="@string/status"
+                            android:paddingHorizontal="5dp"
+                            android:paddingVertical="2dp"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </androidx.cardview.widget.CardView>
+
                     <TextView
                         android:id="@+id/fixture_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
                         android:ellipsize="end"
                         android:textColor="@color/colorOnSecondary"
-                        android:padding="1.5dp"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:layout_marginTop="5dp"/>
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/fixture_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:textColor="@color/colorOnSecondary"
+                        android:textSize="11sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:minWidth="40dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:minWidth="40dp"
                     android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/team2_run"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
+
                     <TextView
                         android:id="@+id/team2_over"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -158,6 +193,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="vertical">
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -165,29 +201,37 @@
                     android:backgroundTint="@color/white"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="5dp">
+
                     <ImageView
                         android:id="@+id/visitor_team_image"
                         android:layout_width="90dp"
                         android:layout_height="wrap_content"
-                        android:maxHeight="150dp"
-                        android:minHeight="130dp"
-                        android:padding="5dp"
                         android:layout_gravity="center_horizontal"
                         android:adjustViewBounds="true"
                         android:contentDescription="@string/image_view"
                         android:elevation="20dp"
+                        android:maxHeight="150dp"
+                        android:minHeight="130dp"
+                        android:padding="5dp"
                         tools:src="@tools:sample/backgrounds/scenic" />
                 </androidx.cardview.widget.CardView>
+
                 <TextView
                     android:id="@+id/visitor_team_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
+                    android:hint="@string/team_name"
+                    android:gravity="center"
                     android:padding="2dp"
-                    android:hint="@string/team_name" />
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@color/horizontalLine" />
 
         <TextView
             android:id="@+id/fixture_note_venue"
@@ -195,9 +239,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="12dp"
             android:layout_marginVertical="2dp"
+            android:gravity="center"
             android:hint="@string/fixture_note"
-            android:textSize="18sp"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="#6E6861"
+            android:textSize="13sp" />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

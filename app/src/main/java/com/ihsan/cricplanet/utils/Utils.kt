@@ -1,7 +1,9 @@
 package com.ihsan.cricplanet.utils
 
+import android.os.Build
 import android.util.Log
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -58,12 +60,12 @@ class Utils {
         return upcomingYearString
     }
 
-    fun dateFormat(dateString: String): String {
+    fun dateFormat(dateString: String): List<String> {
         val apiFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'000Z'")
-        val targetFormat = DateTimeFormatter.ofPattern("dd-MM-yy hh:mm a")
+        val targetFormat = DateTimeFormatter.ofPattern("dd-MM-yy/hh:mm a")
         val date = apiFormat.parse(dateString)
-
-        return targetFormat.format(date)
+        val arrayDateTime=targetFormat.format(date).split("/")
+        return arrayDateTime
     }
 
     fun timeAgoConverter(timestamp: String): String {

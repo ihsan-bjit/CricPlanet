@@ -9,7 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <!--Theme-->
-    <color name="colorPrimary">#1E90FF</color> <!-- Dodger Blue -->
+    <color name="colorPrimary">#48238C</color> <!-- Dodger Blue -->
     <color name="colorPrimaryVariant">#87CEEB</color> <!-- Sky Blue -->
     <color name="colorPrimaryDark">#00688B</color> <!-- Dark Turquoise -->
     <color name="colorAccent">#FFA07A</color> <!-- Light Salmon -->
@@ -19,5 +19,6 @@
     <color name="colorOnSecondary">#000000</color> <!-- Black -->
     <color name="colorBackground">#000000</color> <!-- Black -->
     <color name="colorSurface">#202020</color> <!-- Gray-20 -->
-    <color name="colorOnSurface">#FFFFFF</color> <!-- White -->
+    <color name="colorOnSurface">#FFFFFF</color>
+    <color name="horizontalLine">#009688</color> <!-- White -->
 </resources>

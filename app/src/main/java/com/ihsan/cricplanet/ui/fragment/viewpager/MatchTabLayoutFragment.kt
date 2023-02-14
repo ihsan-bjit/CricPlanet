@@ -31,7 +31,6 @@ class MatchTabLayoutFragment : Fragment() {
         val viewPage = view.findViewById<ViewPager2>(R.id.view_pager_2_match)
         val tabMatchAdapter = TabMatchAdapter(childFragmentManager, lifecycle)
         viewPage.adapter = tabMatchAdapter
-
         TabLayoutMediator(tabLayout, viewPage) { tab, position ->
             tab.text = TabMatchAdapter.matchListTab[position].category
         }.attach()

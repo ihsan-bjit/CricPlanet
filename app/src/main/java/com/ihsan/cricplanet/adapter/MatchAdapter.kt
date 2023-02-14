@@ -29,6 +29,7 @@ class MatchAdapter(private val matchList: List<FixtureIncludeTeamsVenue>) :
         val status: TextView = itemView.findViewById(R.id.fixture_status)
         val noteOrVenue: TextView = itemView.findViewById(R.id.fixture_note_venue)
         val upcomingDate:TextView = itemView.findViewById(R.id.fixture_date)
+        val upcomingTime:TextView=itemView.findViewById(R.id.fixture_time)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MatchViewHolder {
@@ -58,13 +59,23 @@ class MatchAdapter(private val matchList: List<FixtureIncludeTeamsVenue>) :
             if(match.live==true){
                 holder.status.text = "LIVE ON GOING"
                 holder.upcomingDate.text= ""
+                holder.upcomingTime.text=""
             }else{
                 holder.status.text = "UPCOMING"
                 holder.status.setBackgroundColor(R.drawable.gradient_status_background)
-                holder.upcomingDate.text= match.starting_at?.let { Utils().dateFormat(it) }
+                val dateTimeList=Utils().dateFormat(match.starting_at!!)
+                holder.upcomingDate.text=dateTimeList[0]
+                holder.upcomingTime.text=dateTimeList[1]
             }
             holder.status.setBackgroundColor(R.drawable.gradient_status_background)
-            holder.noteOrVenue.text = "${match.venue?.name} • ${match.venue?.city}"
+            if (match.venue?.name==null || match.venue.city ==null)
+            {
+                holder.noteOrVenue.text="Not Decided Yet"
+            }
+            else{
+                holder.noteOrVenue.text = "${match.venue.name} • ${match.venue.city}"
+            }
+
         } else {
             holder.status.setBackgroundColor(R.color.colorPrimary)
             holder.status.text = match.status
