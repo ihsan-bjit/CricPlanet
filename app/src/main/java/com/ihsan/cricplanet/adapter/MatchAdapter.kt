@@ -57,7 +57,6 @@ class MatchAdapter(private val matchList: List<FixtureIncludeTeamsVenue>) :
         if (match.status == "NS") {
             if(match.live==true){
                 holder.status.text = "LIVE ON GOING"
-                holder.status.setBackgroundColor()
                 holder.upcomingDate.text= ""
             }else{
                 holder.status.text = "UPCOMING"
