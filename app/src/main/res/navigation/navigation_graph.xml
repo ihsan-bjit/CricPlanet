@@ -30,7 +30,11 @@
         tools:layout="@layout/fragment_main_tab_layout" >
         <action
             android:id="@+id/action_mainTabLayoutFragment_to_matchTabLayoutFragment"
-            app:destination="@id/matchTabLayoutFragment" />
+            app:destination="@id/matchTabLayoutFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/matchesFragment"
@@ -80,6 +84,10 @@
         tools:layout="@layout/fragment_match_tab_layout" >
         <action
             android:id="@+id/action_matchTabLayoutFragment_to_mainTabLayoutFragment"
-            app:destination="@id/mainTabLayoutFragment" />
+            app:destination="@id/mainTabLayoutFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 </navigation>
