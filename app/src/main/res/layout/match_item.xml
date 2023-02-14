@@ -25,6 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
+            android:textStyle="bold"
             android:hint="@string/fixture_name"/>
     </LinearLayout>
         <LinearLayout
@@ -44,6 +45,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="7dp"
+                    android:backgroundTint="@color/white"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="5dp">
                     <ImageView
@@ -52,6 +54,7 @@
                         android:layout_height="wrap_content"
                         android:maxHeight="150dp"
                         android:minHeight="130dp"
+                        android:padding="5dp"
                         android:layout_gravity="center_horizontal"
                         android:adjustViewBounds="true"
                         android:contentDescription="@string/image_view"
@@ -75,6 +78,7 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
+                    android:minWidth="40dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -100,7 +104,7 @@
                         android:id="@+id/match_vs"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="VS"
+                        android:hint="@string/vs"
                         android:textSize="18sp"
                         android:textStyle="bold|italic"/>
 
@@ -117,6 +121,7 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
+                    android:minWidth="40dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -142,6 +147,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="7dp"
+                    android:backgroundTint="@color/white"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="5dp">
                     <ImageView
@@ -150,6 +156,7 @@
                         android:layout_height="wrap_content"
                         android:maxHeight="150dp"
                         android:minHeight="130dp"
+                        android:padding="5dp"
                         android:layout_gravity="center_horizontal"
                         android:adjustViewBounds="true"
                         android:contentDescription="@string/image_view"
@@ -170,9 +177,11 @@
             android:id="@+id/fixture_note_venue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:layout_marginStart="10dp"
-            android:hint="@string/fixture_note"/>
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginVertical="2dp"
+            android:hint="@string/fixture_note"
+            android:textSize="18sp"
+            android:textColor="@color/colorPrimary"/>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

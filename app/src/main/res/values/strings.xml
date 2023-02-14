@@ -12,4 +12,5 @@
     <string name="fixture_name">Fixture Name</string>
     <string name="fixture_note">Fixture Note</string>
     <string name="status">status</string>
+    <string name="vs">VS</string>
 </resources>
