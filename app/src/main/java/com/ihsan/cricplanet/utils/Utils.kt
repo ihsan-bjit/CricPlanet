@@ -58,6 +58,14 @@ class Utils {
         return upcomingYearString
     }
 
+    fun dateFormat(dateString: String): String {
+        val apiFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'000Z'")
+        val targetFormat = DateTimeFormatter.ofPattern("dd-MM-yy hh:mm a")
+        val date = apiFormat.parse(dateString)
+
+        return targetFormat.format(date)
+    }
+
     fun timeAgoConverter(timestamp: String): String {
         val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US)
         val date = dateFormat.parse(timestamp)

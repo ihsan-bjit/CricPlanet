@@ -26,7 +26,7 @@ class CricRepository(private val cricDao: CricDao) {
     }
 
     suspend fun getFixturesApi():List<FixtureIncludeTeamsVenue>{
-        return CricApi.retrofitService.getFixturesResponse("2023-01-15,2023-02-13","Finished","localteam,visitorteam,venue",Constant.API_KEY).data
+        return CricApi.retrofitService.getFixturesResponse("2022-01-15,2024-02-13","","localteam,visitorteam,venue",Constant.API_KEY).data
     }
 
     suspend fun getUpcomingFixturesApi():List<FixtureIncludeTeamsVenue>{

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.ihsan.cricplanet.R
 import com.ihsan.cricplanet.model.fixture.FixtureIncludeTeamsVenue
+import com.ihsan.cricplanet.utils.Utils
 import com.squareup.picasso.Picasso
 
 class MatchAdapter(private val matchList: List<FixtureIncludeTeamsVenue>) :
@@ -44,21 +45,32 @@ class MatchAdapter(private val matchList: List<FixtureIncludeTeamsVenue>) :
     override fun onBindViewHolder(holder: MatchViewHolder, position: Int) {
         val match = matchList[position]
         Log.d("teamAdapter", "BindViewHolder: ${matchList.size}")
-        holder.localTeam.text = match.localteam?.name
-        holder.visitorTeam.text = match.visitorteam?.name
-        holder.matchName.text = match.round
-
+        holder.localTeam.text = match.localteam!!.name
+        holder.visitorTeam.text = match.visitorteam!!.name
+        holder.matchName.text = match.type
         holder.localTeamImage.setImageResource(R.drawable.ic_image)
         holder.visitorTeamImage.setImageResource(R.drawable.ic_image)
 
+        if(match.live==true){
+            holder.status.text = "LIVE ON GOING"
+        }
         if (match.status == "NS") {
-            holder.status.text = "UPCOMING"
+            if(match.live==true){
+                holder.status.text = "LIVE ON GOING"
+                holder.status.setBackgroundColor()
+                holder.upcomingDate.text= ""
+            }else{
+                holder.status.text = "UPCOMING"
+                holder.status.setBackgroundColor(R.drawable.gradient_status_background)
+                holder.upcomingDate.text= match.starting_at?.let { Utils().dateFormat(it) }
+            }
             holder.status.setBackgroundColor(R.drawable.gradient_status_background)
-            holder.noteOrVenue.text = "${match.venue?.name}•${match.venue?.city}"
-            holder.upcomingDate.text=match.starting_at
+            holder.noteOrVenue.text = "${match.venue?.name} • ${match.venue?.city}"
         } else {
+            holder.status.setBackgroundColor(R.color.colorPrimary)
             holder.status.text = match.status
             holder.noteOrVenue.text = match.note
+            holder.upcomingDate.text=""
         }
 
         if (!TextUtils.isEmpty(match.localteam?.image_path)) {
@@ -73,11 +85,6 @@ class MatchAdapter(private val matchList: List<FixtureIncludeTeamsVenue>) :
         } else {
             holder.localTeamImage.setImageResource(R.drawable.ic_image)
         }
-
-        /*holder.itemView.setOnClickListener{
-            showStyledSnackbar(it, match.name)
-            notifyDataSetChanged()
-        }*/
     }
 
     private fun showStyledSnackbar(view: View, text: String) {
