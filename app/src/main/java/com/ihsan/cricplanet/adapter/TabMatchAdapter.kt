@@ -12,6 +12,9 @@ class TabMatchAdapter (manager: FragmentManager, lifecycle: Lifecycle): Fragment
         val matchListTab = listOf(
             Tab(UpcomingMatchesFragment(), "Upcoming"),
             Tab(RecentMatchesFragment(), "Recent"),
+            Tab(TTwentyMatchesFragment(), "T20"),
+            Tab(ODIMatchesFragment(), "ODI"),
+            Tab(TestMatchesFragment(), "TEST"),
             Tab(MatchesFragment(), "ALL")
         )
     }

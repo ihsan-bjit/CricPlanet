@@ -1,18 +1,20 @@
 package com.ihsan.cricplanet.model
 
-data class League(
-    val code: String?,
+data class VenueIncludeCountry(
+    val capacity: Int?,
+    val city: String?,
     val country_id: Int?,
+    val floodlight: Boolean?,
     val id: Int,
     val image_path: String?,
     val name: String?,
     val resource: String?,
-    val season_id: Int?,
-    val type: String?,
+    val country: Country?,
     val updated_at: String?
-)
-{
-    constructor():this(
+) {
+    constructor() : this(
+        null,
+        null,
         null,
         null,
         0,
@@ -20,7 +22,6 @@ data class League(
         null,
         null,
         null,
-        null,
-        null,
+        null
     )
 }

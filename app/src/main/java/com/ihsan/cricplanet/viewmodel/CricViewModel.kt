@@ -7,8 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.ihsan.cricplanet.model.Team
-import com.ihsan.cricplanet.model.fixture.FixtureIncludeTeams
-import com.ihsan.cricplanet.model.fixture.FixtureIncludeTeamsVenue
+import com.ihsan.cricplanet.model.fixture.FixtureIncludeForCard
 import com.ihsan.cricplanet.repository.CricRepository
 import com.ihsan.cricplanet.roomdb.dao.CricDao
 import com.ihsan.cricplanet.roomdb.db.CricPlanetDatabase
@@ -17,11 +16,17 @@ import kotlinx.coroutines.*
 class CricViewModel(application: Application) : AndroidViewModel(application) {
     //Initialize repository object
     private val repository: CricRepository
-
     //Dao Initialize
     private var CricDao: CricDao
 
     val getTeamsDB: LiveData<List<Team>>
+
+    private val _upcomingMatchFixture = MutableLiveData<List<FixtureIncludeForCard>>()
+    val upcomingMatchFixture:LiveData<List<FixtureIncludeForCard>> =_upcomingMatchFixture
+    private val _recentMatchFixture = MutableLiveData<List<FixtureIncludeForCard>>()
+    val recentMatchFixture:LiveData<List<FixtureIncludeForCard>> =_recentMatchFixture
+    private val _matchFixture = MutableLiveData<List<FixtureIncludeForCard>>()
+    val matchFixture:LiveData<List<FixtureIncludeForCard>> =_matchFixture
 
     init {
         //Getting dao instance
@@ -29,6 +34,9 @@ class CricViewModel(application: Application) : AndroidViewModel(application) {
         //Assigning dao object to repository instance
         repository = CricRepository(CricDao)
         getTeamsDB = repository.readTeams()
+        //getUpcomingFixturesApi()
+        //getRecentFixturesApi()
+        //getFixturesApi()
     }
 
     suspend fun storeLocal(apiTeamList: List<Team>?) {
@@ -51,47 +59,41 @@ class CricViewModel(application: Application) : AndroidViewModel(application) {
             }
         }
     }
-    fun getFixturesApi():MutableLiveData<List<FixtureIncludeTeamsVenue>> {
-        val fixturesLiveData= MutableLiveData<List<FixtureIncludeTeamsVenue>>()
+    fun getFixturesApi() {
         GlobalScope.launch {
             viewModelScope.launch {
                 try {
-                    fixturesLiveData.value=repository.getFixturesApi()
-                    Log.d("cricViewModel", "getFeatures: ${fixturesLiveData.value}")
+                    _matchFixture.value=repository.getFixturesApi()
+                    Log.d("cricViewModel", "viewModel Api getFixture: ${matchFixture.value?.size}")
                 } catch (e: java.lang.Exception) {
-                    Log.d("cricViewModelCatch", "getFeatures: $e")
+                    Log.d("cricViewModelCatch", "viewModel Api getFixture: $e")
                 }
             }
         }
-        return fixturesLiveData
     }
 
-    fun getUpcomingFixturesApi():MutableLiveData<List<FixtureIncludeTeamsVenue>> {
-        val upcomingFixturesLiveData = MutableLiveData<List<FixtureIncludeTeamsVenue>>()
+    fun getUpcomingFixturesApi() {
         GlobalScope.launch {
             viewModelScope.launch {
                 try {
-                    upcomingFixturesLiveData.value=repository.getUpcomingFixturesApi()
-                    Log.d("cricViewModel", "getFeatures: ${upcomingFixturesLiveData.value}")
+                    _upcomingMatchFixture.value=repository.getUpcomingFixturesApi()
+                    Log.d("cricViewModel", "viewModel Api getUpcomingFixture: ${upcomingMatchFixture.value?.size}")
                 } catch (e: java.lang.Exception) {
-                    Log.d("cricViewModelCatch", "getFeatures: $e")
+                    Log.d("cricViewModelCatch", "getUpcomingFixture: $e")
                 }
             }
         }
-        return upcomingFixturesLiveData
     }
-    fun getRecentFixturesApi():MutableLiveData<List<FixtureIncludeTeamsVenue>> {
-        val recentFixturesLiveData= MutableLiveData<List<FixtureIncludeTeamsVenue>>()
+    fun getRecentFixturesApi(){
         GlobalScope.launch {
             viewModelScope.launch {
                 try {
-                    recentFixturesLiveData.value=repository.getRecentFixturesApi()
-                    Log.d("cricViewModel", "getFeatures: ${recentFixturesLiveData.value}")
+                    _recentMatchFixture.value=repository.getRecentFixturesApi()
+                    Log.d("cricViewModel", "viewModel Api getRecentFixture: ${recentMatchFixture.value?.size}")
                 } catch (e: java.lang.Exception) {
-                    Log.d("cricViewModelCatch", "getFeatures: $e")
+                    Log.d("cricViewModelCatch", "viewModel Api getRecentFixture: $e")
                 }
             }
         }
-        return recentFixturesLiveData
     }
 }

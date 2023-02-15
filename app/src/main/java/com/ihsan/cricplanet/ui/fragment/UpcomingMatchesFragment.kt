@@ -33,13 +33,12 @@ class UpcomingMatchesFragment : Fragment() {
         recyclerView=binding.recyclerviewMatches
         recyclerView.layoutManager = LinearLayoutManager(requireActivity())
         recyclerView.setHasFixedSize(true)
-        viewModel.getUpcomingFixturesApi().observe(viewLifecycleOwner) {
+        viewModel.getUpcomingFixturesApi()
+        viewModel.upcomingMatchFixture.observe(viewLifecycleOwner) { it ->
+            //val sortMatchByDate=it.sortedBy { it.starting_at }
             Log.d("cricTeam", "onViewCreated Upcoming Match Fragment: $it")
+            val upcomingMatchLiveFilter= it.filter {it1 -> it1.live==false }
             recyclerView.adapter= MatchAdapter(it)
-            if (it.isEmpty()) {
-                Log.d("cricTeam", "onViewCreated with empty roomData: APi Call ")
-                viewModel.getTeams()
-            }
         }
     }
 }

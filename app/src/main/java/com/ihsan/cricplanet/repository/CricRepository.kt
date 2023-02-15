@@ -1,12 +1,8 @@
 package com.ihsan.cricplanet.repository
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import com.ihsan.cricplanet.model.Team
-import com.ihsan.cricplanet.model.fixture.Fixture
-import com.ihsan.cricplanet.model.fixture.FixtureIncludeTeams
-import com.ihsan.cricplanet.model.fixture.FixtureIncludeTeamsVenue
+import com.ihsan.cricplanet.model.fixture.FixtureIncludeForCard
 import com.ihsan.cricplanet.network.CricApi
 import com.ihsan.cricplanet.roomdb.dao.CricDao
 import com.ihsan.cricplanet.utils.Constant
@@ -21,19 +17,37 @@ class CricRepository(private val cricDao: CricDao) {
         return cricDao.storeTeams(team)
     }
 
-    suspend fun getTeamsApi():List<Team>{
+    suspend fun getTeamsApi(): List<Team> {
         return CricApi.retrofitService.getTeamsResponse(Constant.API_KEY).data
     }
 
-    suspend fun getFixturesApi():List<FixtureIncludeTeamsVenue>{
-        return CricApi.retrofitService.getFixturesResponse("2022-01-15,2024-02-13","","localteam,visitorteam,venue",Constant.API_KEY).data
+    suspend fun getFixturesApi(): List<FixtureIncludeForCard> {
+        return CricApi.retrofitService.getFixturesResponse(
+            "2022-01-15,2024-02-13",
+            "",
+            "localteam,visitorteam,venue.country,season,league",
+            "starting_at",
+            Constant.API_KEY
+        ).data
     }
 
-    suspend fun getUpcomingFixturesApi():List<FixtureIncludeTeamsVenue>{
-        return CricApi.retrofitService.getFixturesResponse(Utils().upcomingYearDuration(),"NS","localteam,visitorteam,venue",Constant.API_KEY).data
+    suspend fun getUpcomingFixturesApi(): List<FixtureIncludeForCard> {
+        return CricApi.retrofitService.getFixturesResponse(
+            Utils().upcomingYearDuration(),
+            "NS",
+            "localteam,visitorteam,venue,season,league",
+            "starting_at",
+            Constant.API_KEY
+        ).data
     }
 
-    suspend fun getRecentFixturesApi():List<FixtureIncludeTeamsVenue>{
-        return CricApi.retrofitService.getFixturesResponse(Utils().recentMonthDuration(),"Finished","localteam,visitorteam,venue",Constant.API_KEY).data
+    suspend fun getRecentFixturesApi(): List<FixtureIncludeForCard> {
+        return CricApi.retrofitService.getFixturesResponse(
+            Utils().recentMonthDuration(),
+            "Finished",
+            "localteam,visitorteam,venue,season,league",
+            "starting_at",
+            Constant.API_KEY
+        ).data
     }
 }

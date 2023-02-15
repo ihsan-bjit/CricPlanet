@@ -12,7 +12,8 @@ class Constant {
         const val countries = "countries"
         const val continents = "continents"
         const val include = "include"
-
+        const val sort = "sort"
+        const val live = "live"
         const val fixtures = "fixtures"
 
         //Fixture Filter
@@ -31,21 +32,35 @@ class Constant {
         //Fixture Include
         /*"message":
         {
-            "message": "Requested include(s) `dv` are not allowed. Allowed include(s) are
-            `localteam, localteamCount, visitorteam, visitorteamCount, scoreboards,
-            scoreboardsCount, scoreboards.team, runs, runsCount, runs.team, balls,
-            ballsCount, stage, stageCount, balls.team, balls.batsman, balls.bowler,
-            balls.batsmanout, balls.catchstump, balls.score, balls.batsmanone, balls.batsmantwo,
-            batting, battingCount, batting.result, balls.runoutby, batting.team, batting.batsman,
-            batting.bowler, batting.catchstump, batting.batsmanout, batting.runoutby, bowling,
-            bowlingCount, bowling.team, bowling.player, season, seasonCount, league, leagueCount,
-            referee, refereeCount, firstumpire, firstumpireCount, secondumpire, secondumpireCount,
-            tvumpire, tvumpireCount, manofmatch, manofmatchCount, manofseries, manofseriesCount,
-            tosswon, tosswonCount, winnerteam, winnerteamCount, lineup, lineupCount, lineup.team,
-            lineup.player, venue, venueCount, venue.country, odds, oddsCount, odds.bookmaker,
-            odds.market, bowling.bowler, localteam.fixtures, localteam.fixtures.localteam,
-            localteam.fixtures.visitorteam, visitorteam.fixtures, visitorteam.fixtures.localteam,
-            visitorteam.fixtures.visitorteam, localteam.country, visitorteam.country`."
+            localteam
+    visitorteam
+    scoreboards
+    scoreboards.team
+    runs
+    runs.team
+    balls//time 20s call single player .5s
+    balls.team
+    balls.batsman, balls.bowler, balls.batsmanout, balls.catchstump,
+    balls.score, balls.batsmanone, balls.batsmantwo
+
+    stage
+    batting
+    batting.result
+
+    balls.runoutby, batting.team, batting.batsman, batting.bowler,
+    batting.catchstump, batting.batsmanout, batting.runoutby, bowling
+
+    tosswon
+    localteam.fixtures.localteam
+
+    bowling.team, season, league, referee, firstumpire, secondumpire,
+    tvumpire, manofmatch, manofseries
+
+    winnerteam, lineup, venue, venue.country, odds, odds.bookmaker, odds.market
+
+    bowling.bowler, localteam.fixtures, localteam.fixtures.visitorteam,
+    visitorteam.fixtures, visitorteam.fixtures.localteam, visitorteam.fixtures.visitorteam,
+    localteam.country, visitorteam.country
         }*/
 
         const val teams = "teams"

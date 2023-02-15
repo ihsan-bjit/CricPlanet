@@ -9,11 +9,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.ihsan.cricplanet.R
 import com.ihsan.cricplanet.adapter.MatchAdapter
-import com.ihsan.cricplanet.adapter.TeamAdapter
 import com.ihsan.cricplanet.databinding.FragmentMatchesBinding
-import com.ihsan.cricplanet.databinding.FragmentTeamBinding
 import com.ihsan.cricplanet.viewmodel.CricViewModel
 
 class MatchesFragment : Fragment() {
@@ -34,13 +31,10 @@ class MatchesFragment : Fragment() {
         recyclerView=binding.recyclerviewMatches
         recyclerView.layoutManager = LinearLayoutManager(requireActivity())
         recyclerView.setHasFixedSize(true)
-        viewModel.getFixturesApi().observe(viewLifecycleOwner) {
-            Log.d("cricTeam", "onViewCreated Team teamList: $it")
+        viewModel.getFixturesApi()
+        viewModel.matchFixture.observe(viewLifecycleOwner) {
+            Log.d("cricTeam", "onViewCreated MatchFixture: $it")
             recyclerView.adapter= MatchAdapter(it)
-            if (it.isEmpty()) {
-                Log.d("cricTeam", "onViewCreated with empty roomData: APi Call ")
-                viewModel.getTeams()
-            }
         }
     }
 }

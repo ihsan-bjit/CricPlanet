@@ -90,4 +90,19 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
+    <fragment
+        android:id="@+id/ODIMatchesFragment"
+        android:name="com.ihsan.cricplanet.ui.fragment.ODIMatchesFragment"
+        android:label="fragment_o_d_i_matches"
+        tools:layout="@layout/fragment_o_d_i_matches" />
+    <fragment
+        android:id="@+id/TTwentyMatchesFragment"
+        android:name="com.ihsan.cricplanet.ui.fragment.TTwentyMatchesFragment"
+        android:label="fragment_t_twenty_matches"
+        tools:layout="@layout/fragment_t_twenty_matches" />
+    <fragment
+        android:id="@+id/testMatchesFragment"
+        android:name="com.ihsan.cricplanet.ui.fragment.TestMatchesFragment"
+        android:label="fragment_test_matches"
+        tools:layout="@layout/fragment_test_matches" />
 </navigation>
