@@ -1,8 +1,10 @@
 package com.ihsan.cricplanet.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import com.ihsan.cricplanet.model.Team
 import com.ihsan.cricplanet.model.fixture.FixtureIncludeForCard
+import com.ihsan.cricplanet.model.fixture.FixtureIncludeForLiveCard
 import com.ihsan.cricplanet.network.CricApi
 import com.ihsan.cricplanet.roomdb.dao.CricDao
 import com.ihsan.cricplanet.utils.Constant
@@ -30,8 +32,15 @@ class CricRepository(private val cricDao: CricDao) {
             Constant.API_KEY
         ).data
     }
-    suspend fun getLiveFixturesApi(): List<FixtureIncludeForCard> {
+    suspend fun getLiveFixturesApi(): List<FixtureIncludeForLiveCard> {
+        Log.d("cricRepository", "getLiveFixturesApi: ${CricApi.retrofitService.getLiveFixturesResponse(
+            "localteam,visitorteam,venue,season,league",
+            "starting_at",
+            Constant.API_KEY
+        ).data}")
         return CricApi.retrofitService.getLiveFixturesResponse(
+            "localteam,visitorteam,venue,season,league",
+            "starting_at",
             Constant.API_KEY
         ).data
     }

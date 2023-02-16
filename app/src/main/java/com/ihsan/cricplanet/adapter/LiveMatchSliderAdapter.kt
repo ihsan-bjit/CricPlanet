@@ -12,14 +12,14 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
-import com.bumptech.glide.Glide
 import com.ihsan.cricplanet.R
 import com.ihsan.cricplanet.model.fixture.FixtureIncludeForCard
+import com.ihsan.cricplanet.model.fixture.FixtureIncludeForLiveCard
 import com.ihsan.cricplanet.utils.MyApplication
 import com.ihsan.cricplanet.utils.Utils
 import com.squareup.picasso.Picasso
 
-class LiveMatchSliderAdapter (private val context: Context, private var liveMatchList: List<FixtureIncludeForCard>) : PagerAdapter() {
+class LiveMatchSliderAdapter (private val context: Context, private var liveMatchList: List<FixtureIncludeForLiveCard>) : PagerAdapter() {
     override fun getCount(): Int {
         return liveMatchList.size
     }
@@ -53,8 +53,8 @@ class LiveMatchSliderAdapter (private val context: Context, private var liveMatc
         visitorTeamName.text = match.visitorteam!!.name
         localTeamImage.setImageResource(R.drawable.ic_image)
         visitorTeamImage.setImageResource(R.drawable.ic_image)
-        upcomingDate.text = dateTimeList[0]
-        upcomingTime.text = dateTimeList[1]
+        //upcomingDate.text = dateTimeList[0]
+        upcomingTime.text = "Started at ${dateTimeList[1]}"
 
         if (!TextUtils.isEmpty(match.localteam.image_path)) {
             Picasso.get().load(match.localteam.image_path).fit()
@@ -69,7 +69,8 @@ class LiveMatchSliderAdapter (private val context: Context, private var liveMatc
             localTeamImage.setImageResource(R.drawable.ic_image)
         }
 
-        if (match.live == true) {
+        Log.d("cricSlider", "instantiateItem: ${match}")
+        if (match.live==true) {
             Log.d("cricMatchAdapter", "onBindViewHolderLive: $match")
             status.text = "• LIVE"
             status.setBackgroundColor(
@@ -83,9 +84,6 @@ class LiveMatchSliderAdapter (private val context: Context, private var liveMatc
         if (match.venue?.name == null || match.venue.city == null) {
             "Not Decided Yet".also { noteOrVenue.text = it }
         } else {
-            if (match.venue.country?.name != null) {
-                noteOrVenue.text = "${match.venue.name} • ${match.venue.city} • ${match.venue.country?.name}"
-            }
             noteOrVenue.text = "${match.venue.name} • ${match.venue.city}"
         }
 

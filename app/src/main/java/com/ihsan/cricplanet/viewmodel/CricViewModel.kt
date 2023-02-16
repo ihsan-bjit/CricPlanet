@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.ihsan.cricplanet.model.Team
 import com.ihsan.cricplanet.model.fixture.FixtureIncludeForCard
+import com.ihsan.cricplanet.model.fixture.FixtureIncludeForLiveCard
 import com.ihsan.cricplanet.repository.CricRepository
 import com.ihsan.cricplanet.roomdb.dao.CricDao
 import com.ihsan.cricplanet.roomdb.db.CricPlanetDatabase
@@ -29,8 +30,8 @@ class CricViewModel(application: Application) : AndroidViewModel(application) {
     val matchFixture:LiveData<List<FixtureIncludeForCard>> =_matchFixture
     private val _todayFixture = MutableLiveData<List<FixtureIncludeForCard>>()
     val todayFixture:LiveData<List<FixtureIncludeForCard>> =_todayFixture
-    private val _liveFixture = MutableLiveData<List<FixtureIncludeForCard>>()
-    val liveFixture:LiveData<List<FixtureIncludeForCard>> =_liveFixture
+    private val _liveFixture = MutableLiveData<List<FixtureIncludeForLiveCard>>()
+    val liveFixture:LiveData<List<FixtureIncludeForLiveCard>> =_liveFixture
 
     init {
         //Getting dao instance
@@ -77,7 +78,7 @@ class CricViewModel(application: Application) : AndroidViewModel(application) {
             viewModelScope.launch {
                 try {
                     _liveFixture.value=repository.getLiveFixturesApi()
-                    Log.d("cricViewModel", "viewModel Api getLiveFixture: ${matchFixture.value?.size}")
+                    Log.d("cricViewModel", "viewModel Api getLiveFixture: ${liveFixture.value}")
                 } catch (e: java.lang.Exception) {
                     Log.d("cricViewModelCatch", "viewModel Api getLiveFixture: $e")
                 }

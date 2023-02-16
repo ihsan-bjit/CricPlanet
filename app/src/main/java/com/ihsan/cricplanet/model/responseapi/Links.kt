@@ -6,3 +6,11 @@ data class Links(
     val next: String?,
     val prev: Any?
 )
+{
+    constructor():this(
+        null,
+        null,
+        null,
+        null,
+    )
+}

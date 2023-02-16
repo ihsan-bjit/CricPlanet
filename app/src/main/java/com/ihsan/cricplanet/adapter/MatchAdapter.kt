@@ -118,8 +118,9 @@ class MatchAdapter(private val matchList: List<FixtureIncludeForCard>) :
                 if (match.venue.country?.name != null) {
                     holder.noteOrVenue.text =
                         "${match.venue.name} • ${match.venue.city} • ${match.venue.country?.name}"
+                }else{
+                    holder.noteOrVenue.text = "${match.venue.name} • ${match.venue.city}"
                 }
-                holder.noteOrVenue.text = "${match.venue.name} • ${match.venue.city}"
             }
 
         }

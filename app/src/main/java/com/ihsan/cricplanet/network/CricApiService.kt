@@ -1,6 +1,8 @@
 package com.ihsan.cricplanet.network
 
+import com.ihsan.cricplanet.model.fixture.FixtureIncludeForLiveCard
 import com.ihsan.cricplanet.model.responseapi.ResponseFixtureIncludeForCard
+import com.ihsan.cricplanet.model.responseapi.ResponseFixtureIncludeForLiveCard
 import com.ihsan.cricplanet.model.responseapi.ResponseTeam
 import com.ihsan.cricplanet.utils.Constant
 import com.squareup.moshi.Moshi
@@ -31,8 +33,10 @@ interface CricApiService {
 
     @GET(Constant.liveScores)
     suspend fun getLiveFixturesResponse(
+        @Query(Constant.include) include: String,
+        @Query(Constant.sort) sort: String,
         @Query(Constant.api_token) api_token: String
-    ): ResponseFixtureIncludeForCard
+    ): ResponseFixtureIncludeForLiveCard
 }
 
 object CricApi {
