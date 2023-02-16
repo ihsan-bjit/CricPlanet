@@ -28,6 +28,11 @@ interface CricApiService {
         @Query(Constant.sort) sort: String,
         @Query(Constant.api_token) api_token: String
     ): ResponseFixtureIncludeForCard
+
+    @GET(Constant.liveScores)
+    suspend fun getLiveFixturesResponse(
+        @Query(Constant.api_token) api_token: String
+    ): ResponseFixtureIncludeForCard
 }
 
 object CricApi {

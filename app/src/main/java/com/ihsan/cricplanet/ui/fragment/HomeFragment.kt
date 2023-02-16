@@ -45,7 +45,7 @@ class HomeFragment : Fragment() {
             Log.d("cricHome", "onViewCreatedHomeSlider: $it")
             viewPagerAdapter = LiveMatchSliderAdapter(requireContext(), it as ArrayList)
             viewpager.adapter = viewPagerAdapter
-            indicator = requireView().findViewById(R.id.indicator) as CircleIndicator
+            indicator = binding.indicator
             indicator.setViewPager(viewpager)
         }
 

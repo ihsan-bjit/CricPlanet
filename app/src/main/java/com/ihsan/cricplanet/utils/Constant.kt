@@ -15,6 +15,7 @@ class Constant {
         const val sort = "sort"
         const val live = "live"
         const val fixtures = "fixtures"
+        const val liveScores = "livescores"
 
         //Fixture Filter
         const val filterByStatus = "filter[status]"
