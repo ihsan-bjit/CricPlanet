@@ -1,9 +1,7 @@
 package com.ihsan.cricplanet.utils
 
-import android.os.Build
 import android.util.Log
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -58,6 +56,16 @@ class Utils {
         Log.d("cricUtils", "lastMonthDuration: $upcomingYearString")
 
         return upcomingYearString
+    }
+
+    fun getCurrentDate(): String {
+        // Get the current date and time
+        val currentDateTime = LocalDateTime.now()
+        val tomorrowDateTime = currentDateTime.plusDays(1)
+        // Format the new date as a string
+        val formatter = DateTimeFormatter.ofPattern("dd-MM-yy")
+        Log.d("cricUtils", "currentDateTime: $currentDateTime")
+        return "${currentDateTime.format(formatter)},${tomorrowDateTime.format(formatter)}"
     }
 
     fun dateFormat(dateString: String): List<String> {

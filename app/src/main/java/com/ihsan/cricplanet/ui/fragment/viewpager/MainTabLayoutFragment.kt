@@ -20,8 +20,7 @@ class MainTabLayoutFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentMainTabLayoutBinding.inflate(inflater)
-        // Inflate the layout for this fragment
+        binding = FragmentMainTabLayoutBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -29,11 +28,13 @@ class MainTabLayoutFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //Tab layout
         val tabLayout = view.findViewById<TabLayout>(R.id.tab_layout)
-        val viewPage = view.findViewById<ViewPager2>(R.id.view_pager_2)
+        val viewPager = view.findViewById<ViewPager2>(R.id.view_pager_2)
+        //For RecyclerView horizontal touch
+        viewPager.isUserInputEnabled = false
         val tabAdapter = TabAdapter(childFragmentManager, lifecycle)
-        viewPage.adapter = tabAdapter
+        viewPager.adapter = tabAdapter
 
-        TabLayoutMediator(tabLayout, viewPage) { tab, position ->
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = listTab[position].category
         }.attach()
     }

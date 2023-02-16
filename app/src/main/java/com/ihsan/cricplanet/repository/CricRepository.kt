@@ -30,6 +30,25 @@ class CricRepository(private val cricDao: CricDao) {
             Constant.API_KEY
         ).data
     }
+    suspend fun getLiveFixturesApi(): List<FixtureIncludeForCard> {
+        return CricApi.retrofitService.getFixturesResponse(
+            Utils().getCurrentDate(),
+            "",
+            "localteam,visitorteam,venue.country,season,league",
+            "starting_at",
+            Constant.API_KEY
+        ).data
+    }
+
+    suspend fun getTodayFixturesApi(): List<FixtureIncludeForCard> {
+        return CricApi.retrofitService.getFixturesResponse(
+            Utils().getCurrentDate(),
+            "",
+            "localteam,visitorteam,venue.country,season,league",
+            "starting_at",
+            Constant.API_KEY
+        ).data
+    }
 
     suspend fun getUpcomingFixturesApi(): List<FixtureIncludeForCard> {
         return CricApi.retrofitService.getFixturesResponse(

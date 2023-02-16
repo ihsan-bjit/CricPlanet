@@ -124,6 +124,4 @@ class MatchAdapter(private val matchList: List<FixtureIncludeForCard>) :
 
         }
     }
-
-
 }
