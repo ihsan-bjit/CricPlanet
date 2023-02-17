@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager.widget.ViewPager
 import com.ihsan.cricplanet.R
 import com.ihsan.cricplanet.adapter.LiveMatchSliderAdapter
 import com.ihsan.cricplanet.adapter.MatchAdapter
@@ -50,23 +51,16 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //Live Card Slider
         val viewPager=binding.viewpager
+        //Live Api Call
         viewModel.getUpcomingFixturesApi()
+        //Live Observer
         viewModel.upcomingMatchFixture.observe(viewLifecycleOwner){
             Log.d("cricHome", "onViewCreatedHomeSlider: $it")
             stopAutoSlide()
-            update=null
-            viewPagerAdapter = LiveMatchSliderAdapter(requireContext(), it as ArrayList)
+            //update=null
+            viewPagerAdapter = LiveMatchSliderAdapter(requireContext(), it.take(10) as ArrayList)
             viewPager.adapter = viewPagerAdapter
-            indicator = binding.indicator
-            indicator.setViewPager(viewPager)
-            update = Runnable {
-                var currentPage = viewPager.currentItem
-                val totalPages = viewPager.adapter?.count ?: 0
-                currentPage = (currentPage + 1) % totalPages
-                viewPager.currentItem = currentPage
-                startAutoSlide()
-            }
-            startAutoSlide()
+            autoSlide(viewPager)
         }
 
         //Recycler view
@@ -80,18 +74,29 @@ class HomeFragment : Fragment() {
             recyclerView.adapter= MatchAdapter(it)
         }
     }
-
     override fun onPause() {
         super.onPause()
         stopAutoSlide()
     }
-    fun startAutoSlide() {
+
+    private fun autoSlide(viewPager: ViewPager){
+        indicator = binding.indicator
+        indicator.setViewPager(viewPager)
+        update = Runnable {
+            var currentPage = viewPager.currentItem
+            val totalPages = viewPager.adapter?.count ?: 0
+            currentPage = (currentPage + 1) % totalPages
+            viewPager.currentItem = currentPage
+            startAutoSlide()
+        }
+        startAutoSlide()
+    }
+    private fun startAutoSlide() {
         if (update!=null){
             handler.postDelayed(update!!, PERIOD_MS)
         }
     }
-
-    fun stopAutoSlide() {
+    private fun stopAutoSlide() {
         if (update!=null){
             handler.removeCallbacks(update!!)
         }
