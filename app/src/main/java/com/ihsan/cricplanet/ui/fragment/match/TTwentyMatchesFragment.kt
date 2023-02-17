@@ -1,4 +1,4 @@
-package com.ihsan.cricplanet.ui.fragment
+package com.ihsan.cricplanet.ui.fragment.match
 
 import android.os.Bundle
 import android.util.Log
@@ -9,36 +9,33 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.ihsan.cricplanet.R
 import com.ihsan.cricplanet.adapter.MatchAdapter
-import com.ihsan.cricplanet.databinding.FragmentUpcomingMatchesBinding
+import com.ihsan.cricplanet.databinding.FragmentTTwentyMatchesBinding
 import com.ihsan.cricplanet.viewmodel.CricViewModel
 
-class UpcomingMatchesFragment : Fragment() {
-    private lateinit var binding:FragmentUpcomingMatchesBinding
+class TTwentyMatchesFragment : Fragment() {
+    private lateinit var binding: FragmentTTwentyMatchesBinding
     private val viewModel: CricViewModel by viewModels()
     private lateinit var recyclerView: RecyclerView
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        binding=FragmentUpcomingMatchesBinding.inflate(inflater,container,false)
+        binding=FragmentTTwentyMatchesBinding.inflate(inflater,container,false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("cricUpcomingMatch", "onViewCreated: ")
-        recyclerView=binding.recyclerviewMatches
+        recyclerView=binding.recyclerviewTTwentyMatches
         recyclerView.layoutManager = LinearLayoutManager(requireActivity())
         recyclerView.setHasFixedSize(true)
-        viewModel.getUpcomingFixturesApi()
-        viewModel.upcomingMatchFixture.observe(viewLifecycleOwner) { it ->
-            //val sortMatchByDate=it.sortedBy { it.starting_at }
-            Log.d("cricTeam", "onViewCreated Upcoming Match Fragment: $it")
-            val upcomingMatchLiveFilter= it.filter {it1 -> it1.live==false }
-            recyclerView.adapter= MatchAdapter(it)
+        viewModel.getFixturesApi()
+        viewModel.matchFixture.observe(viewLifecycleOwner) {
+            val tTwentyFiltered=it.filter { it1-> it1.type=="T20" || it1.type=="T20I" }
+            Log.d("cricTeam", "onViewCreated T20 MatchFixture: ${tTwentyFiltered.size}")
+            recyclerView.adapter= MatchAdapter(tTwentyFiltered)
         }
     }
 }

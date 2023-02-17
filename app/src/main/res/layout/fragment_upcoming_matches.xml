@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingBottom="60dp"
-    tools:context=".ui.fragment.UpcomingMatchesFragment">
+    tools:context=".ui.fragment.match.UpcomingMatchesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_matches"

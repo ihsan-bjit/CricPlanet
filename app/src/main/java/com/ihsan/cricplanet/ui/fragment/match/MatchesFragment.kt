@@ -1,4 +1,4 @@
-package com.ihsan.cricplanet.ui.fragment
+package com.ihsan.cricplanet.ui.fragment.match
 
 import android.os.Bundle
 import android.util.Log
@@ -9,34 +9,32 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.ihsan.cricplanet.R
 import com.ihsan.cricplanet.adapter.MatchAdapter
 import com.ihsan.cricplanet.databinding.FragmentMatchesBinding
-import com.ihsan.cricplanet.databinding.FragmentTestMatchesBinding
 import com.ihsan.cricplanet.viewmodel.CricViewModel
 
-class TestMatchesFragment : Fragment() {
-    private lateinit var binding: FragmentTestMatchesBinding
+class MatchesFragment : Fragment() {
+    private lateinit var binding: FragmentMatchesBinding
     private val viewModel: CricViewModel by viewModels()
     private lateinit var recyclerView: RecyclerView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding=FragmentTestMatchesBinding.inflate(inflater,container,false)
+        // Inflate the layout for this fragment
+        binding=FragmentMatchesBinding.inflate(inflater,container,false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recyclerView=binding.recyclerviewTestMatches
+        recyclerView=binding.recyclerviewMatches
         recyclerView.layoutManager = LinearLayoutManager(requireActivity())
         recyclerView.setHasFixedSize(true)
         viewModel.getFixturesApi()
         viewModel.matchFixture.observe(viewLifecycleOwner) {
-            val testFilter=it.filter { it1-> it1.type=="Test/5day" || it1.type=="4day" }
-            Log.d("cricTeam", "onViewCreated Test MatchFixture: ${testFilter.size}")
-            recyclerView.adapter= MatchAdapter(testFilter)
+            Log.d("cricTeam", "onViewCreated MatchFixture: $it")
+            recyclerView.adapter= MatchAdapter(it)
         }
     }
 }

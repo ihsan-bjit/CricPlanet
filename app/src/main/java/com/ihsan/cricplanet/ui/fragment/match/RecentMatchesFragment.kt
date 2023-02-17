@@ -1,22 +1,20 @@
-package com.ihsan.cricplanet.ui.fragment
+package com.ihsan.cricplanet.ui.fragment.match
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.ihsan.cricplanet.R
 import com.ihsan.cricplanet.adapter.MatchAdapter
-import com.ihsan.cricplanet.databinding.FragmentMatchesBinding
-import com.ihsan.cricplanet.databinding.FragmentTTwentyMatchesBinding
+import com.ihsan.cricplanet.databinding.FragmentRecentMatchesBinding
 import com.ihsan.cricplanet.viewmodel.CricViewModel
 
-class TTwentyMatchesFragment : Fragment() {
-    private lateinit var binding: FragmentTTwentyMatchesBinding
+class RecentMatchesFragment : Fragment() {
+    private lateinit var binding: FragmentRecentMatchesBinding
     private val viewModel: CricViewModel by viewModels()
     private lateinit var recyclerView: RecyclerView
 
@@ -24,20 +22,21 @@ class TTwentyMatchesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding=FragmentTTwentyMatchesBinding.inflate(inflater,container,false)
+        // Inflate the layout for this fragment
+        binding = FragmentRecentMatchesBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recyclerView=binding.recyclerviewTTwentyMatches
+        Log.d("cricUpcomingMatch", "onViewCreated: ")
+        recyclerView = binding.recyclerviewMatches
         recyclerView.layoutManager = LinearLayoutManager(requireActivity())
         recyclerView.setHasFixedSize(true)
-        viewModel.getFixturesApi()
-        viewModel.matchFixture.observe(viewLifecycleOwner) {
-            val tTwentyFiltered=it.filter { it1-> it1.type=="T20" || it1.type=="T20I" }
-            Log.d("cricTeam", "onViewCreated T20 MatchFixture: ${tTwentyFiltered.size}")
-            recyclerView.adapter= MatchAdapter(tTwentyFiltered)
+        viewModel.getRecentFixturesApi()
+        viewModel.recentMatchFixture.observe(viewLifecycleOwner) {
+            Log.d("cricTeam", "onViewCreated Recent Match Fragment: $it")
+            recyclerView.adapter = MatchAdapter(it)
         }
     }
 }

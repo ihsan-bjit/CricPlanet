@@ -5,20 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.fragment.viewpager.MainTabLayoutFragment">
+    tools:context=".ui.fragment.viewpager.MatchDetailTabLayoutFragment">
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab_layout"
+        android:id="@+id/tab_layout_match_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabTextColor="@color/colorPrimaryVariant"
-        app:tabSelectedTextColor="@color/cardview_light_background"
         android:backgroundTint="@color/colorPrimary"
         android:contentDescription="@string/view_pager_card_view"
-        app:tabMode="scrollable" />
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/cardview_light_background"
+        app:tabTextColor="@color/colorPrimaryDark" />
 
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/view_pager_2"
+        android:id="@+id/view_pager_2_match_details"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

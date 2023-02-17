@@ -9,9 +9,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.ihsan.cricplanet.R
 import com.ihsan.cricplanet.model.fixture.FixtureIncludeForCard
+import com.ihsan.cricplanet.ui.fragment.viewpager.MatchTabLayoutFragmentDirections
 import com.ihsan.cricplanet.utils.MyApplication
 import com.ihsan.cricplanet.utils.Utils
 import com.squareup.picasso.Picasso
@@ -111,7 +113,6 @@ class MatchAdapter(private val matchList: List<FixtureIncludeForCard>) :
                 }
             }
 
-
             if (match.venue?.name == null || match.venue.city == null) {
                 "Not Decided Yet".also { holder.noteOrVenue.text = it }
             } else {
@@ -123,6 +124,12 @@ class MatchAdapter(private val matchList: List<FixtureIncludeForCard>) :
                 }
             }
 
+            holder.itemView.setOnClickListener{
+                val action= match.let {
+                    MatchTabLayoutFragmentDirections.actionMatchTabLayoutFragmentToMatchDetailTabLayoutFragment(it.id)
+                }
+                holder.run { itemView.findNavController().navigate(action) }
+            }
         }
     }
 }

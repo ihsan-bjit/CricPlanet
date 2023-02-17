@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.ihsan.cricplanet.model.Tab
-import com.ihsan.cricplanet.ui.fragment.*
+import com.ihsan.cricplanet.ui.fragment.match.*
 
 class TabMatchAdapter (manager: FragmentManager, lifecycle: Lifecycle): FragmentStateAdapter(manager,lifecycle) {
     companion object{

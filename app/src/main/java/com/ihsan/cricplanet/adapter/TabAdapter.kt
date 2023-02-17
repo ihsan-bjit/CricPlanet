@@ -11,8 +11,7 @@ import com.ihsan.cricplanet.ui.fragment.LiveFragment
 class TabAdapter(manager: FragmentManager, lifecycle: Lifecycle): FragmentStateAdapter(manager,lifecycle) {
     companion object{
         val listTab = listOf(
-            Tab(HomeFragment(), "Home"),
-            Tab(LiveFragment(), "Live")
+            Tab(HomeFragment(), "Home")
         )
     }
     override fun getItemCount(): Int {

@@ -1,4 +1,4 @@
-package com.ihsan.cricplanet.ui.fragment
+package com.ihsan.cricplanet.ui.fragment.match
 
 import android.os.Bundle
 import android.util.Log
@@ -10,31 +10,31 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ihsan.cricplanet.adapter.MatchAdapter
-import com.ihsan.cricplanet.databinding.FragmentMatchesBinding
+import com.ihsan.cricplanet.databinding.FragmentTestMatchesBinding
 import com.ihsan.cricplanet.viewmodel.CricViewModel
 
-class MatchesFragment : Fragment() {
-    private lateinit var binding: FragmentMatchesBinding
+class TestMatchesFragment : Fragment() {
+    private lateinit var binding: FragmentTestMatchesBinding
     private val viewModel: CricViewModel by viewModels()
     private lateinit var recyclerView: RecyclerView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        binding=FragmentMatchesBinding.inflate(inflater,container,false)
+        binding=FragmentTestMatchesBinding.inflate(inflater,container,false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recyclerView=binding.recyclerviewMatches
+        recyclerView=binding.recyclerviewTestMatches
         recyclerView.layoutManager = LinearLayoutManager(requireActivity())
         recyclerView.setHasFixedSize(true)
         viewModel.getFixturesApi()
         viewModel.matchFixture.observe(viewLifecycleOwner) {
-            Log.d("cricTeam", "onViewCreated MatchFixture: $it")
-            recyclerView.adapter= MatchAdapter(it)
+            val testFilter=it.filter { it1-> it1.type=="Test/5day" || it1.type=="4day" }
+            Log.d("cricTeam", "onViewCreated Test MatchFixture: ${testFilter.size}")
+            recyclerView.adapter= MatchAdapter(testFilter)
         }
     }
 }

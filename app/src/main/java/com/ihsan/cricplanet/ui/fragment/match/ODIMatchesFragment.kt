@@ -1,4 +1,4 @@
-package com.ihsan.cricplanet.ui.fragment
+package com.ihsan.cricplanet.ui.fragment.match
 
 import android.os.Bundle
 import android.util.Log
@@ -9,9 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.ihsan.cricplanet.R
 import com.ihsan.cricplanet.adapter.MatchAdapter
-import com.ihsan.cricplanet.databinding.FragmentMatchesBinding
 import com.ihsan.cricplanet.databinding.FragmentODIMatchesBinding
 import com.ihsan.cricplanet.viewmodel.CricViewModel
 

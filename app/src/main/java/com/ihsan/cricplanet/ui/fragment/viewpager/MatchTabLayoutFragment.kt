@@ -27,8 +27,8 @@ class MatchTabLayoutFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //Tab layout
-        val tabLayout = view.findViewById<TabLayout>(R.id.tab_layout_match)
-        val viewPage = view.findViewById<ViewPager2>(R.id.view_pager_2_match)
+        val tabLayout = binding.tabLayoutMatch
+        val viewPage = binding.viewPager2Match
         val tabMatchAdapter = TabMatchAdapter(childFragmentManager, lifecycle)
         viewPage.adapter = tabMatchAdapter
         TabLayoutMediator(tabLayout, viewPage) { tab, position ->
