@@ -19,7 +19,7 @@ import com.ihsan.cricplanet.utils.MyApplication
 import com.ihsan.cricplanet.utils.Utils
 import com.squareup.picasso.Picasso
 
-class LiveMatchSliderAdapter (private val context: Context, private var liveMatchList: List<FixtureIncludeForLiveCard>) : PagerAdapter() {
+class LiveMatchSliderAdapter (private val context: Context, private var liveMatchList: List<FixtureIncludeForCard>) : PagerAdapter() {
     override fun getCount(): Int {
         return liveMatchList.size
     }
@@ -43,58 +43,55 @@ class LiveMatchSliderAdapter (private val context: Context, private var liveMatc
         val upcomingDate: TextView = itemView.findViewById(R.id.fixture_date)
         val upcomingTime: TextView = itemView.findViewById(R.id.fixture_time)
 
-        val match=liveMatchList[position]
+        liveMatchList[position].let {
 
-        val dateTimeList = Utils().dateFormat(match.starting_at!!)
-        Log.d("teamAdapter", "BindViewHolder: ${liveMatchList.size}")
-        matchName.text = "${match.league?.name} • ${match.type}"
-        matchRound.text=match.round
-        localTeamName.text = match.localteam!!.name
-        visitorTeamName.text = match.visitorteam!!.name
-        localTeamImage.setImageResource(R.drawable.ic_image)
-        visitorTeamImage.setImageResource(R.drawable.ic_image)
-        //upcomingDate.text = dateTimeList[0]
-        upcomingTime.text = "Started at ${dateTimeList[1]}"
-
-        if (!TextUtils.isEmpty(match.localteam.image_path)) {
-            Picasso.get().load(match.localteam.image_path).fit()
-                .placeholder(R.drawable.progress_animation).into(localTeamImage)
-        } else {
+            val dateTimeList = Utils().dateFormat(it.starting_at!!)
+            Log.d("teamAdapter", "BindViewHolder: ${liveMatchList.size}")
+            matchName.text = "${it.league?.name} • ${it.type}"
+            matchRound.text=it.round
+            localTeamName.text = it.localteam!!.name
+            visitorTeamName.text = it.visitorteam!!.name
             localTeamImage.setImageResource(R.drawable.ic_image)
-        }
-        if (!TextUtils.isEmpty(match.visitorteam.image_path)) {
-            Picasso.get().load(match.visitorteam.image_path).fit()
-                .placeholder(R.drawable.progress_animation).into(visitorTeamImage)
-        } else {
-            localTeamImage.setImageResource(R.drawable.ic_image)
-        }
+            visitorTeamImage.setImageResource(R.drawable.ic_image)
+            //upcomingDate.text = dateTimeList[0]
+            upcomingTime.text = "Started at ${dateTimeList[1]}"
 
-        Log.d("cricSlider", "instantiateItem: ${match}")
-        if (match.live==true) {
-            Log.d("cricMatchAdapter", "onBindViewHolderLive: $match")
-            status.text = "• LIVE"
-            status.setBackgroundColor(
-                ContextCompat.getColor(
-                    MyApplication.instance, R.color.md_red_400
+            if (!TextUtils.isEmpty(it.localteam.image_path)) {
+                Picasso.get().load(it.localteam.image_path).fit()
+                    .placeholder(R.drawable.progress_animation).into(localTeamImage)
+            } else {
+                localTeamImage.setImageResource(R.drawable.ic_image)
+            }
+            if (!TextUtils.isEmpty(it.visitorteam.image_path)) {
+                Picasso.get().load(it.visitorteam.image_path).fit()
+                    .placeholder(R.drawable.progress_animation).into(visitorTeamImage)
+            } else {
+                localTeamImage.setImageResource(R.drawable.ic_image)
+            }
+
+            Log.d("cricSlider", "instantiateItem: ${it}")
+            if (it.live==true) {
+                Log.d("cricMatchAdapter", "onBindViewHolderLive: $it")
+                status.text = "• LIVE"
+                status.setBackgroundColor(
+                    ContextCompat.getColor(
+                        MyApplication.instance, R.color.md_red_400
+                    )
                 )
-            )
-        }
+            }
 
+            if (it.venue?.name == null || it.venue.city == null) {
+                "Not Decided Yet".also { noteOrVenue.text = it }
+            } else {
+                noteOrVenue.text = "${it.venue.name} • ${it.venue.city}"
+            }
+    }
 
-        if (match.venue?.name == null || match.venue.city == null) {
-            "Not Decided Yet".also { noteOrVenue.text = it }
-        } else {
-            noteOrVenue.text = "${match.venue.name} • ${match.venue.city}"
-        }
-
-        val vp = container as ViewPager
-        vp.addView(itemView, 0)
+        container.addView(itemView)
         return itemView
     }
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-        val vp = container as ViewPager
-        val view = `object` as View
-        vp.removeView(view)
+        container.removeView(`object` as View)
     }
 }
