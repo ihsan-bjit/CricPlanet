@@ -37,58 +37,88 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginHorizontal="20dp"
+            android:layout_marginHorizontal="15dp"
             android:background="@color/horizontalLine" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:gravity="top|center"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:id="@+id/team1_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:layout_marginLeft="5dp"
                 android:layout_gravity="center"
+                android:layout_marginStart="5dp"
                 android:foregroundGravity="center"
                 android:gravity="center"
                 android:orientation="vertical"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/team_middle_layout"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent">
+                app:layout_constraintVertical_bias="0.0">
 
-                <androidx.cardview.widget.CardView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="7dp"
-                    android:backgroundTint="@color/white"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="5dp">
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/local_team_image"
-                        android:layout_width="90dp"
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:adjustViewBounds="true"
-                        android:contentDescription="@string/image_view"
-                        android:elevation="20dp"
-                        android:maxHeight="150dp"
-                        android:minHeight="130dp"
-                        android:padding="5dp"
-                        tools:src="@tools:sample/backgrounds/scenic" />
-                </androidx.cardview.widget.CardView>
+                        android:layout_margin="7dp"
+                        android:backgroundTint="@color/white"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="5dp">
+
+
+                        <ImageView
+                            android:id="@+id/local_team_image"
+                            android:layout_width="90dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:adjustViewBounds="true"
+                            android:contentDescription="@string/image_view"
+                            android:elevation="20dp"
+                            android:maxHeight="150dp"
+                            android:minHeight="130dp"
+                            android:padding="5dp"
+                            tools:src="@tools:sample/backgrounds/scenic" />
+                    </androidx.cardview.widget.CardView>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:minWidth="40dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/team1_run"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/team1_over"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/local_team_name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="90dp"
                     android:layout_height="wrap_content"
-                    android:hint="@string/team_name"
+                    android:layout_gravity="left"
+                    android:layout_marginHorizontal="8dp"
                     android:gravity="center"
+                    android:hint="@string/team_name"
                     android:textSize="15sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -98,168 +128,151 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal"
-                app:layout_constraintStart_toEndOf="@+id/team1_layout"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/team2_layout"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent">
+                app:layout_constraintStart_toEndOf="@+id/team1_layout"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/match_round"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:gravity="center"
-                    android:minWidth="40dp"
-                    android:orientation="vertical">
+                    android:text=""
+                    android:textColor="@color/horizontalLine"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/team1_run"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/team1_over"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/card_details"
+                <TextView
+                    android:id="@+id/match_vs"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="2dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/vs"
+                    android:textSize="18sp"
+                    android:textStyle="bold|italic" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="2dp">
 
                     <TextView
-                        android:id="@+id/match_round"
+                        android:id="@+id/fixture_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="@color/horizontalLine"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/match_vs"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:layout_marginBottom="10dp"
-                        android:text="@string/vs"
-                        android:textSize="18sp"
-                        android:textStyle="bold|italic" />
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:cardCornerRadius="10dp"
-                        app:cardElevation="2dp">
-
-                        <TextView
-                            android:id="@+id/fixture_status"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@color/colorPrimary"
-                            android:ellipsize="end"
-                            android:hint="@string/status"
-                            android:paddingHorizontal="5dp"
-                            android:paddingVertical="2dp"
-                            android:textColor="@color/white"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:id="@+id/fixture_date"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
+                        android:background="@color/colorPrimary"
                         android:ellipsize="end"
-                        android:textColor="@color/colorOnSecondary"
-                        android:textSize="11sp" />
+                        android:hint="@string/status"
+                        android:paddingHorizontal="5dp"
+                        android:paddingVertical="2dp"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </androidx.cardview.widget.CardView>
 
-                    <TextView
-                        android:id="@+id/fixture_time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:textColor="@color/colorOnSecondary"
-                        android:textSize="11sp" />
-                </LinearLayout>
-
-                <LinearLayout
+                <TextView
+                    android:id="@+id/fixture_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:gravity="center"
-                    android:minWidth="40dp"
-                    android:orientation="vertical">
+                    android:layout_marginTop="2dp"
+                    android:ellipsize="end"
+                    android:textColor="@color/colorOnSecondary"
+                    android:textSize="11sp" />
 
-                    <TextView
-                        android:id="@+id/team2_run"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/team2_over"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-
+                <TextView
+                    android:id="@+id/fixture_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:textColor="@color/colorOnSecondary"
+                    android:textSize="11sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/team2_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"
                 android:gravity="center"
                 android:orientation="vertical"
-                app:layout_constraintStart_toEndOf="@+id/team_middle_layout"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/team_middle_layout"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent">
+                app:layout_constraintVertical_bias="0.0">
 
-                <androidx.cardview.widget.CardView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="7dp"
-                    android:backgroundTint="@color/white"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="5dp">
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/visitor_team_image"
-                        android:layout_width="90dp"
+                    <LinearLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:adjustViewBounds="true"
-                        android:contentDescription="@string/image_view"
-                        android:elevation="20dp"
-                        android:maxHeight="150dp"
-                        android:minHeight="130dp"
-                        android:padding="5dp"
-                        tools:src="@tools:sample/backgrounds/scenic" />
-                </androidx.cardview.widget.CardView>
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center"
+                        android:minWidth="40dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/team2_run"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/team2_over"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="7dp"
+                        android:backgroundTint="@color/white"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="5dp">
+
+                        <ImageView
+                            android:id="@+id/visitor_team_image"
+                            android:layout_width="90dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:adjustViewBounds="true"
+                            android:contentDescription="@string/image_view"
+                            android:elevation="20dp"
+                            android:maxHeight="150dp"
+                            android:minHeight="130dp"
+                            android:padding="5dp"
+                            tools:src="@tools:sample/backgrounds/scenic" />
+
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/visitor_team_name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="90dp"
                     android:layout_height="wrap_content"
-                    android:hint="@string/team_name"
+                    android:layout_gravity="right"
+                    android:layout_marginHorizontal="8dp"
                     android:gravity="center"
+                    android:hint="@string/team_name"
                     android:textSize="15sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:ignore="RtlHardcoded" />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginHorizontal="20dp"
+            android:layout_marginHorizontal="15dp"
             android:background="@color/horizontalLine" />
 
         <TextView

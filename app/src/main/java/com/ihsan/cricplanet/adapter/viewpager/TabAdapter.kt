@@ -1,4 +1,4 @@
-package com.ihsan.cricplanet.adapter
+package com.ihsan.cricplanet.adapter.viewpager
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -6,7 +6,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.ihsan.cricplanet.model.Tab
 import com.ihsan.cricplanet.ui.fragment.HomeFragment
-import com.ihsan.cricplanet.ui.fragment.LiveFragment
 
 class TabAdapter(manager: FragmentManager, lifecycle: Lifecycle): FragmentStateAdapter(manager,lifecycle) {
     companion object{

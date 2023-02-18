@@ -1,4 +1,4 @@
-package com.ihsan.cricplanet.adapter
+package com.ihsan.cricplanet.adapter.viewpager
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

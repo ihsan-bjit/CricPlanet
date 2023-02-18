@@ -5,12 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.ihsan.cricplanet.R
-import com.ihsan.cricplanet.adapter.TabAdapter
-import com.ihsan.cricplanet.adapter.TabMatchAdapter
+import com.ihsan.cricplanet.adapter.viewpager.TabMatchAdapter
 import com.ihsan.cricplanet.databinding.FragmentMatchTabLayoutBinding
 
 class MatchTabLayoutFragment : Fragment() {

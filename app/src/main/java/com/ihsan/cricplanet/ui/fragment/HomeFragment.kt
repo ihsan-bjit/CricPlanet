@@ -12,12 +12,9 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
-import com.ihsan.cricplanet.R
 import com.ihsan.cricplanet.adapter.LiveMatchSliderAdapter
 import com.ihsan.cricplanet.adapter.MatchAdapter
 import com.ihsan.cricplanet.databinding.FragmentHomeBinding
-import com.ihsan.cricplanet.model.fixture.FixtureIncludeForCard
-import com.ihsan.cricplanet.model.slider.FixtureIncludeForCardSlider
 import com.ihsan.cricplanet.viewmodel.CricViewModel
 import me.relex.circleindicator.CircleIndicator
 
@@ -31,13 +28,13 @@ class HomeFragment : Fragment() {
     private val DELAY_MS: Long = 2000
     private val PERIOD_MS: Long = 4000
     private val handler = Handler()
-    private var update:Runnable?=null
+    private var update: Runnable? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding= FragmentHomeBinding.inflate(inflater,container,false)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -46,40 +43,42 @@ class HomeFragment : Fragment() {
         stopAutoSlide()
         startAutoSlide()
     }
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //Live Card Slider
-        val viewPager=binding.viewpager
+        val viewPager = binding.viewpager
         //Live Api Call
         viewModel.getUpcomingFixturesApi()
         //Live Observer
-        viewModel.upcomingMatchFixture.observe(viewLifecycleOwner){
+        viewModel.upcomingMatchFixture.observe(viewLifecycleOwner) {
             Log.d("cricHome", "onViewCreatedHomeSlider: $it")
             stopAutoSlide()
-            //update=null
             viewPagerAdapter = LiveMatchSliderAdapter(requireContext(), it.take(10) as ArrayList)
             viewPager.adapter = viewPagerAdapter
             autoSlide(viewPager)
         }
 
         //Recycler view
-        recyclerView=binding.recyclerviewToday
-        recyclerView.layoutManager = LinearLayoutManager(requireActivity(),LinearLayoutManager.HORIZONTAL, false)
+        recyclerView = binding.recyclerviewToday
+        recyclerView.layoutManager =
+            LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
         recyclerView.setHasFixedSize(true)
         //Get Data From API
         viewModel.getTodayFixturesApi()
         viewModel.todayFixture.observe(viewLifecycleOwner) {
             Log.d("cricTeam", "onViewCreated MatchFixture: $it")
-            recyclerView.adapter= MatchAdapter(it)
+            recyclerView.adapter = MatchAdapter(it)
         }
     }
+
     override fun onPause() {
         super.onPause()
         stopAutoSlide()
     }
 
-    private fun autoSlide(viewPager: ViewPager){
+    private fun autoSlide(viewPager: ViewPager) {
         indicator = binding.indicator
         indicator.setViewPager(viewPager)
         update = Runnable {
@@ -91,13 +90,15 @@ class HomeFragment : Fragment() {
         }
         startAutoSlide()
     }
+
     private fun startAutoSlide() {
-        if (update!=null){
+        if (update != null) {
             handler.postDelayed(update!!, PERIOD_MS)
         }
     }
+
     private fun stopAutoSlide() {
-        if (update!=null){
+        if (update != null) {
             handler.removeCallbacks(update!!)
         }
     }

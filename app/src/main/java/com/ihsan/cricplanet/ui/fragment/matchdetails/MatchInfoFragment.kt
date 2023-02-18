@@ -6,20 +6,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.navArgs
 import com.ihsan.cricplanet.R
+import com.ihsan.cricplanet.adapter.viewpager.TabMatchDetailAdapter
 
-class MatchInfoFragment(val matchId:Int) : Fragment() {
+class MatchInfoFragment() : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_match_info, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Toast.makeText(requireContext(), matchId.toString(), Toast.LENGTH_SHORT).show()
+
+        arguments?.let { Toast.makeText(requireContext(), it.getString("matchId"), Toast.LENGTH_SHORT).show() }
     }
 }

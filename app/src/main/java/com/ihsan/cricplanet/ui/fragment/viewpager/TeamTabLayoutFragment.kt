@@ -9,9 +9,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.ihsan.cricplanet.R
-import com.ihsan.cricplanet.adapter.TabMatchAdapter
-import com.ihsan.cricplanet.adapter.TabTeamAdapter
-import com.ihsan.cricplanet.databinding.FragmentMatchTabLayoutBinding
+import com.ihsan.cricplanet.adapter.viewpager.TabTeamAdapter
 import com.ihsan.cricplanet.databinding.FragmentTeamTabLayoutBinding
 
 class TeamTabLayoutFragment : Fragment() {
