@@ -1,6 +1,7 @@
 package com.ihsan.cricplanet.network
 
 import com.ihsan.cricplanet.model.fixture.FixtureIncludeForLiveCard
+import com.ihsan.cricplanet.model.responseapi.ResponseFixtureById
 import com.ihsan.cricplanet.model.responseapi.ResponseFixtureIncludeForCard
 import com.ihsan.cricplanet.model.responseapi.ResponseFixtureIncludeForLiveCard
 import com.ihsan.cricplanet.model.responseapi.ResponseTeam
@@ -10,6 +11,7 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 private const val BASE_URL = "https://cricket.sportmonks.com/api/v2.0/"
@@ -37,6 +39,12 @@ interface CricApiService {
         @Query(Constant.sort) sort: String,
         @Query(Constant.api_token) api_token: String
     ): ResponseFixtureIncludeForLiveCard
+
+    @GET("fixtures/{id}")
+    suspend fun getFixtureByIdResponse(
+        @Path("id") id: Int,
+        @Query("api_token") apiToken: String
+    ): ResponseFixtureById
 }
 
 object CricApi {

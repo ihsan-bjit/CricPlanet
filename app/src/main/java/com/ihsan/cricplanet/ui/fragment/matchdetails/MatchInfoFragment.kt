@@ -21,7 +21,6 @@ class MatchInfoFragment() : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         arguments?.let { Toast.makeText(requireContext(), it.getString("matchId"), Toast.LENGTH_SHORT).show() }
     }
 }

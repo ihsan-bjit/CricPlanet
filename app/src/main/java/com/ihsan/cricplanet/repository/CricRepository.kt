@@ -74,4 +74,11 @@ class CricRepository(private val cricDao: CricDao) {
             Constant.API_KEY
         ).data
     }
+
+    suspend fun getFixturesByIdApi(Id:Int): List<FixtureIncludeForLiveCard> {
+        return CricApi.retrofitService.getFixtureByIdResponse(
+            Id,
+            Constant.API_KEY
+        ).data
+    }
 }

@@ -123,13 +123,14 @@ class MatchAdapter(private val matchList: List<FixtureIncludeForCard>) :
                     holder.noteOrVenue.text = "${match.venue.name} • ${match.venue.city}"
                 }
             }
-
-            holder.itemView.setOnClickListener{
-                val action= match.let {
-                    MatchTabLayoutFragmentDirections.actionMatchTabLayoutFragmentToMatchDetailTabLayoutFragment(it.id)
-                }
-                holder.run { itemView.findNavController().navigate(action) }
-            }
         }
+
+        holder.itemView.setOnClickListener{
+            val action= match.let {
+                MatchTabLayoutFragmentDirections.actionMatchTabLayoutFragmentToMatchDetailTabLayoutFragment(it.id)
+            }
+            holder.run { itemView.findNavController().navigate(action) }
+        }
+
     }
 }

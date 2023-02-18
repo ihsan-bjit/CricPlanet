@@ -32,6 +32,8 @@ class CricViewModel(application: Application) : AndroidViewModel(application) {
     val todayFixture:LiveData<List<FixtureIncludeForCard>> =_todayFixture
     private val _liveFixture = MutableLiveData<List<FixtureIncludeForLiveCard>>()
     val liveFixture:LiveData<List<FixtureIncludeForLiveCard>> =_liveFixture
+    private val _fixtureById = MutableLiveData<List<FixtureIncludeForLiveCard>>()
+    val fixtureById:LiveData<List<FixtureIncludeForLiveCard>> =_fixtureById
 
     init {
         //Getting dao instance
@@ -39,6 +41,7 @@ class CricViewModel(application: Application) : AndroidViewModel(application) {
         //Assigning dao object to repository instance
         repository = CricRepository(CricDao)
         getTeamsDB = repository.readTeams()
+        getFixturesByIdApi(3)
     }
 
     suspend fun storeLocal(apiTeamList: List<Team>?) {
@@ -69,6 +72,19 @@ class CricViewModel(application: Application) : AndroidViewModel(application) {
                     Log.d("cricViewModel", "viewModel Api getFixture: ${matchFixture.value?.size}")
                 } catch (e: java.lang.Exception) {
                     Log.d("cricViewModelCatch", "viewModel Api getFixture: $e")
+                }
+            }
+        }
+    }
+
+    fun getFixturesByIdApi(Id:Int) {
+        GlobalScope.launch {
+            viewModelScope.launch {
+                try {
+                    _fixtureById.value=repository.getFixturesByIdApi(Id)
+                    Log.d("cricViewModel", "viewModel Api getFixtureById: ${fixtureById.value}")
+                } catch (e: java.lang.Exception) {
+                    Log.d("cricViewModelCatch", "viewModel Api getFixtureById: $e")
                 }
             }
         }

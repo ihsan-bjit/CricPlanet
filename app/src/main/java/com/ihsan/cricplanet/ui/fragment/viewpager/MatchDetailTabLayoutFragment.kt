@@ -28,12 +28,24 @@ class MatchDetailTabLayoutFragment : Fragment() {
         //Tab layout
         val tabLayout = binding.tabLayoutMatchDetails
         val viewPage = binding.viewPager2MatchDetails
+        val scrollView=binding.detailsMatchScrollView
+        val mBottomView=binding.topInfo
         Log.d("cricMatchDetail", "Match Detail fragment onViewCreated: ${args.matchId}")
         val tabMatchDetailAdapter = TabMatchDetailAdapter(childFragmentManager, lifecycle,args.matchId)
-        //tabMatchDetailAdapter.setMatchId(args.matchId)
         viewPage.adapter = tabMatchDetailAdapter
         TabLayoutMediator(tabLayout, viewPage) { tab, position ->
             tab.text = TabMatchDetailAdapter.listMatchDetailTab[position].category
         }.attach()
+
+        var mBottomViewVisible=true
+        scrollView.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            if (scrollY > oldScrollY && mBottomViewVisible) {
+                mBottomView?.animate()?.translationY(mBottomView?.height?.toFloat() ?: 0f)?.start()
+                mBottomViewVisible = true
+            } else if (scrollY < oldScrollY && !mBottomViewVisible) {
+                mBottomView?.animate()?.translationY(0f)?.start()
+                mBottomViewVisible = false
+            }
+        }
     }
 }
