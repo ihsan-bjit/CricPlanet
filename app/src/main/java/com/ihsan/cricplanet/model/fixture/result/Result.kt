@@ -1,9 +1,8 @@
-package com.ihsan.cricplanet.model.fixture.team
+package com.ihsan.cricplanet.model.fixture.result
 
 import com.ihsan.cricplanet.model.fixture.TeamDlData
-import com.ihsan.cricplanet.model.fixture.result.winnerteam.WinnerTeamX
 
-data class TeamSquad(
+data class Result(
     val draw_noresult: Any,
     val elected: String,
     val first_umpire_id: Int,
@@ -20,8 +19,8 @@ data class TeamSquad(
     val referee_id: Int,
     val resource: String,
     val round: String,
-    val rpc_overs: String,
-    val rpc_target: String,
+    val rpc_overs: Any,
+    val rpc_target: Any,
     val season_id: Int,
     val second_umpire_id: Int,
     val stage_id: Int,
@@ -36,6 +35,5 @@ data class TeamSquad(
     val visitorteam_dl_data: TeamDlData,
     val visitorteam_id: Int,
     val weather_report: List<Any>,
-    val winner_team_id: Int,
-    val winnerteam: WinnerTeamX
+    val winner_team_id: Int
 )

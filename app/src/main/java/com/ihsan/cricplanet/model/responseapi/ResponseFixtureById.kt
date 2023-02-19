@@ -1,5 +1,7 @@
 package com.ihsan.cricplanet.model.responseapi
 
-import com.ihsan.cricplanet.model.fixture.FixtureIncludeForLiveCard
+import com.ihsan.cricplanet.model.fixture.FixtureByIdWithDetails
 
-data class ResponseFixtureById(val `data`: List<FixtureIncludeForLiveCard>)
+data class ResponseFixtureById(
+    val `data`: FixtureByIdWithDetails
+    )

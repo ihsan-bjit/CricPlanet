@@ -43,7 +43,8 @@ interface CricApiService {
     @GET("fixtures/{id}")
     suspend fun getFixtureByIdResponse(
         @Path("id") id: Int,
-        @Query("api_token") apiToken: String
+        @Query(Constant.include) include: String,
+        @Query(Constant.api_token) apiToken: String
     ): ResponseFixtureById
 }
 
