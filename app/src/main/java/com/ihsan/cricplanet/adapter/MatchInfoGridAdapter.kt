@@ -1,4 +1,4 @@
-package com.ihsan.cricplanet.ui.fragment.match
+package com.ihsan.cricplanet.adapter
 
 import android.content.Context
 import android.view.LayoutInflater

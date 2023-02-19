@@ -131,6 +131,5 @@ class MatchAdapter(private val matchList: List<FixtureIncludeForCard>) :
             }
             holder.run { itemView.findNavController().navigate(action) }
         }
-
     }
 }
