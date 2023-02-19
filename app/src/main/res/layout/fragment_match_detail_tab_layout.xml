@@ -24,7 +24,8 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorPrimary"
         android:contentDescription="@string/view_pager_card_view"
-        app:tabMode="fixed"
+        app:tabGravity="center"
+        app:tabMode="scrollable"
         app:tabSelectedTextColor="@color/cardview_light_background"
         app:tabTextColor="@color/colorPrimaryDark" />
 

@@ -4,10 +4,8 @@ import com.ihsan.cricplanet.model.League
 import com.ihsan.cricplanet.model.Season
 import com.ihsan.cricplanet.model.Team
 import com.ihsan.cricplanet.model.Venue
-import com.ihsan.cricplanet.model.fixture.referee.Referee
-import com.ihsan.cricplanet.model.fixture.referee.firstumpire.FirstUmpire
-import com.ihsan.cricplanet.model.fixture.referee.secondumpire.SecondUmpire
-import com.ihsan.cricplanet.model.fixture.referee.tvumpire.TvUmpire
+import com.ihsan.cricplanet.model.fixture.referee.RefereeX
+import com.ihsan.cricplanet.model.fixture.referee.Umpire
 import com.ihsan.cricplanet.model.fixture.result.manofseries.ManOfSeries
 import com.ihsan.cricplanet.model.fixture.result.manofthematch.ManOfMatch
 import com.ihsan.cricplanet.model.fixture.result.teamwontoss.TossWon
@@ -20,7 +18,7 @@ data class FixtureByIdWithDetails(
     val draw_noresult: Any?,
     val elected: String?,
     val first_umpire_id: Int?,
-    val firstumpire: FirstUmpire?,
+    val firstumpire: Umpire?,
     val follow_on: Boolean?,
     val id: Int,
     val last_period: Any?,
@@ -36,7 +34,7 @@ data class FixtureByIdWithDetails(
     val manofmatch: ManOfMatch?,
     val manofseries: ManOfSeries?,
     val note: String?,
-    val referee: Referee?,
+    val referee: RefereeX?,
     val referee_id: Int?,
     val resource: String?,
     val round: String?,
@@ -47,7 +45,7 @@ data class FixtureByIdWithDetails(
     val season: Season?,
     val season_id: Int?,
     val second_umpire_id: Int?,
-    val secondumpire: SecondUmpire?,
+    val secondumpire: Umpire?,
     val stage_id: Int?,
     val starting_at: String?,
     val status: String?,
@@ -56,7 +54,7 @@ data class FixtureByIdWithDetails(
     val tosswon: TossWon?,
     val total_overs_played: Int?,
     val tv_umpire_id: Int?,
-    val tvumpire: TvUmpire?,
+    val tvumpire: Umpire?,
     val type: String?,
     val venue: Venue?,
     val venue_id: Int?,
@@ -66,9 +64,8 @@ data class FixtureByIdWithDetails(
     val weather_report: List<Any>?,
     val winner_team_id: Int?,
     val winnerteam: WinnerTeamX?
-)
-{
-    constructor():this(
+) {
+    constructor() : this(
         null,
         null,
         null,

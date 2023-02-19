@@ -1,4 +1,4 @@
-package com.ihsan.cricplanet.adapter
+package com.ihsan.cricplanet.adapter.grid
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -26,11 +26,11 @@ class MatchInfoGridAdapter (val context: Context, val items: List<GridItem>) : B
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val view: View = convertView ?: LayoutInflater.from(context).inflate(R.layout.match_info_grid_item, parent, false)
 
-        val col1TextView = view.findViewById<TextView>(R.id.row_index_key)
-        col1TextView.text = items[position].key
+        val keyTextView = view.findViewById<TextView>(R.id.row_index_key)
+        keyTextView.text = items[position].key
 
-        val col2TextView = view.findViewById<TextView>(R.id.row_index_value)
-        col2TextView.text = items[position].value
+        val valueTextView = view.findViewById<TextView>(R.id.row_index_value)
+        valueTextView.text = items[position].value
 
         return view
     }
